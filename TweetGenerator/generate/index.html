@@ -40,6 +40,39 @@
                     display: flex;
                     flex-direction: column;
                 }
+
+                #backgroundInfo {
+    padding: 16px;
+    background-color: white;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    max-height: 300px; /* Set a maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.background-section.collapsed #backgroundInfo {
+    max-height: 0;
+    padding: 0 16px;
+    overflow-y: hidden;
+}
+
+/* Optional: Add a subtle scrollbar styling */
+#backgroundInfo::-webkit-scrollbar {
+    width: 6px;
+}
+
+#backgroundInfo::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#backgroundInfo::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+#backgroundInfo::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
         
                 .background-section {
                     margin-bottom: 24px;
@@ -59,6 +92,7 @@
                     align-items: center;
                     cursor: pointer;
                     transition: background-color 0.2s;
+                    overflow-y: auto;
                 }
         
                 .background-section h2:hover {
