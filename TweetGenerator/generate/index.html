@@ -1,473 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
     <head>
         <meta charset="UTF-8">
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
         <meta name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
         <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.1/cdn/themes/light.css" />
         <script type="module"
             src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.1/cdn/shoelace-autoloader.js"></script>
-
         <script type="module"
             src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.1/cdn/components/button/button.js"></script>
-        <style>
-                html, body {
-                    height: 100%;
-                    margin: 0;
-                    padding: 0;
-                }
-        
-                body {
-                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                    max-width: 600px;
-                    margin: 40px auto;
-                    padding: 20px;
-                    background-color: #f7f9f9;
-                    display: flex;
-                    flex-direction: column;
-                    min-height: 100vh;
-                    box-sizing: border-box;
-                }
-        
-                .container {
-                    background: white;
-                    padding: 24px;
-                    border-radius: 16px;
-                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                    flex: 1;
-                    display: flex;
-                    flex-direction: column;
-                }
-
-                #backgroundInfo {
-    padding: 16px;
-    background-color: white;
-    transition: max-height 0.3s ease-out;
-    overflow: hidden;
-    max-height: 300px; /* Set a maximum height */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.background-section.collapsed #backgroundInfo {
-        max-height: 0;
-        padding: 0 16px;
-        overflow-y: hidden;
-    }
-
-/* Optional: Add a subtle scrollbar styling */
-#backgroundInfo::-webkit-scrollbar {
-    width: 6px;
-}
-
-#backgroundInfo::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-#backgroundInfo::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 3px;
-}
-
-#backgroundInfo::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-        
-                .background-section {
-                    margin-bottom: 24px;
-                    border: 1px solid #e1e8ed;
-                    border-radius: 12px;
-                    overflow: hidden;
-                }
-        
-                .background-section h2 {
-                    margin: 0;
-                    padding: 16px;
-                    background-color: #f7f9f9;
-                    color: #14171a;
-                    font-size: 18px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    cursor: pointer;
-                    transition: background-color 0.2s;
-                    overflow-y: auto;
-                }
-        
-                .background-section h2:hover {
-                    background-color: #eff3f4;
-                }
-        
-                .background-section h2::after {
-                    content: '▼';
-                    font-size: 12px;
-                    color: #657786;
-                    transition: transform 0.3s ease;
-                }
-        
-                .background-section.collapsed h2::after {
-                    transform: rotate(-90deg);
-                }
-    
-        
-                .background-section.collapsed #backgroundInfo {
-                    max-height: 0;
-                    padding: 0 16px;
-                }
-    
-        
-                .background-info:last-child {
-                    margin-bottom: 0;
-                }
-        
-                .background-info label {
-                    display: block;
-                    font-weight: 600;
-                    color: #1DA1F2;
-                    margin-bottom: 8px;
-                    font-size: 14px;
-                }
-        
-                .background-info p {
-                    margin: 0;
-                    color: #14171a;
-                    line-height: 1.5;
-                }
-        
-                .category-tag {
-                    display: inline-block;
-                    padding: 4px 12px;
-                    background-color: #1DA1F2;
-                    color: white;
-                    border-radius: 16px;
-                    font-size: 14px;
-                    font-weight: 500;
-                }
-        
-                .custom-tweet-input {
-                    margin-top: 12px;
-                    display: none;
-                }
-        
-                .custom-tweet-input input {
-                    width: 100%;
-                    padding: 12px;
-                    border: 2px solid #e1e8ed;
-                    border-radius: 8px;
-                    font-size: 16px;
-                    background-color: white;
-                    transition: border-color 0.2s;
-                }
-        
-                .custom-tweet-input input:focus {
-                    border-color: #1DA1F2;
-                    outline: none;
-                }
-        
-                .custom-tweet-input.visible {
-                    display: block;
-                    margin-bottom: 16px;
-                }
-        
-                h1 {
-                    color: #1DA1F2;
-                    margin: 0 0 24px 0;
-                    font-size: 24px;
-                }
-        
-                .subject-container {
-                    text-align: center;
-                    margin-bottom: 24px;
-                    padding: 16px;
-                    background-color: #f8f9fa;
-                    border-radius: 8px;
-                    border: 2px dashed #e1e8ed;
-                }
-        
-                .subject {
-                    font-size: 18px;
-                    font-weight: 600;
-                    color: #14171a;
-                    margin: 0;
-                }
-        
-                .subject-placeholder {
-                    color: #657786;
-                    font-style: italic;
-                }
-        
-                .controls {
-                    display: grid;
-                    gap: 16px;
-                    margin-bottom: 24px;
-                }
-        
-                select {
-                    width: 100%;
-                    padding: 12px;
-                    border: 2px solid #e1e8ed;
-                    border-radius: 8px;
-                    font-size: 16px;
-                    background-color: white;
-                    cursor: pointer;
-                    transition: border-color 0.2s;
-                }
-        
-                select:hover {
-                    border-color: #1DA1F2;
-                }
-        
-                button {
-                    background-color: #1DA1F2;
-                    color: white;
-                    border: none;
-                    padding: 12px 24px;
-                    border-radius: 9999px;
-                    font-size: 16px;
-                    font-weight: bold;
-                    cursor: pointer;
-                    transition: background-color 0.2s;
-                    width: 100%;
-                }
-        
-                button:hover {
-                    background-color: #1a91da;
-                }
-        
-                .output {
-                    display: none;
-                    margin-top: 24px;
-                    padding: 16px;
-                    border: 2px solid #e1e8ed;
-                    border-radius: 8px;
-                    min-height: 100px;
-                    background-color: white;
-                }
-        
-                .output p {
-                    margin: 0;
-                    font-size: 16px;
-                    line-height: 1.5;
-                    color: #14171a;
-                }
-        
-                .placeholder {
-                    color: #657786;
-                    font-style: italic;
-                }
-        
-                .copy-button {
-                    display: none;
-                    background-color: transparent;
-                    border: 1px solid #1DA1F2;
-                    color: #1DA1F2;
-                    padding: 8px 16px;
-                    border-radius: 9999px;
-                    font-size: 14px;
-                    font-weight: 500;
-                    cursor: pointer;
-                    transition: all 0.2s;
-                    width: auto;
-                    min-width: 100px;
-                }
-        
-                .copy-button:hover {
-                    background-color: rgba(29, 161, 242, 0.1);
-                }
-        
-                .copy-button.copied {
-                    background-color: #28a745;
-                    border-color: #28a745;
-                    color: white;
-                }
-        
-                @media (max-width: 768px) {
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-    }
-
-    .container {
-        padding: 16px;
-        box-shadow: none;
-        border-radius: 0;
-        min-height: 100vh;
-    }
-
-    h1 {
-        font-size: 28px;
-        margin-bottom: 20px;
-    }
-
-    select, button, .custom-tweet-input input {
-        font-size: 18px;
-        padding: 14px;
-        height: auto;
-    }
-
-    .subject {
-        font-size: 24px;
-    }
-
-    .background-section h2 {
-        font-size: 22px;
-        padding: 18px;
-    }
-
-    .background-info label {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-    .background-info p {
-        font-size: 16px;
-        line-height: 1.6;
-    }
-
-    .output p {
-        font-size: 18px;
-        line-height: 1.6;
-    }
-
-    .placeholder {
-        font-size: 18px;
-    }
-
-    .copy-button {
-        font-size: 16px;
-        padding: 12px 24px;
-        margin-top: 16px;
-    }
-
-    .category-tag {
-        font-size: 16px;
-        padding: 6px 14px;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 26px;
-    }
-
-    select, button, .custom-tweet-input input {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    .subject {
-        font-size: 22px;
-    }
-
-    .background-info label {
-        font-size: 16px;
-    }
-
-    .background-info p {
-        font-size: 15px;
-    }
-
-    .output p {
-        font-size: 16px;
-    }
-
-    .background-section h2 {
-        font-size: 20px;
-        padding: 16px;
-    }
-
-    .controls {
-        gap: 12px;
-    }
-
-    .copy-button {
-        font-size: 15px;
-        padding: 10px 20px;
-    }
-
-    .category-tag {
-        font-size: 14px;
-        padding: 5px 12px;
-    }
-
-    .back-btn {
-        font-size: 16px;
-        padding: 10px;
-    }
-}
-            </style>
     </head>
-    <body>
-        <div class="container">
-            <sl-button variant="primary" size="small" onclick="history.back()"
-                class="back-btn">
-                <sl-icon slot="prefix" name="arrow-left-circle"></sl-icon>
-                Back
-            </sl-button>
+    <body class="h-full bg-gray-50 font-sans">
+        <div class="min-h-screen max-w-2xl mx-auto px-4 py-6 sm:py-10">
+            <div
+                class="bg-white rounded-2xl shadow-sm p-4 sm:p-6 min-h-full flex flex-col">
+                <button
+                    onclick="history.back()"
+                    class="inline-flex items-center px-3 py-2 mb-6 text-sm font-medium text-blue-400 hover:text-blue-500 transition-colors self-start">
+                    <svg
+                        class="w-5 h-5 mr-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back
+                </button>
 
-            <h1>Tweet Generator</h1>
-            <!-- <button onclick="history.back()" class="back-button">Back</button> -->
+                <h1
+                    class="text-2xl sm:text-3xl font-semibold text-blue-400 mb-6">Tweet
+                    Generator</h1>
 
-            <div class="background-section collapsed">
-                <h2>Background Information</h2>
-                <div id="backgroundInfo">
-                    <div class="background-info">
-                        <label>Loading subject information...</label>
+                <div
+                    class="mb-6 border border-gray-200 rounded-xl overflow-hidden">
+                    <div
+                        class="cursor-pointer bg-gray-50 hover:bg-gray-100 transition-colors"
+                        id="background-header">
+                        <h2
+                            class="p-4 text-lg font-medium text-gray-900 flex justify-between items-center">
+                            Background Information
+                            <span
+                                class="text-sm text-gray-500 transform transition-transform duration-300"
+                                id="arrow">▼</span>
+                        </h2>
+                    </div>
+                    <div id="backgroundInfo"
+                        class="transition-all duration-300 max-h-96 overflow-y-auto">
+                        <div class="p-4 space-y-4">
+                            <div class="background-info">
+                                <label
+                                    class="text-sm font-semibold text-blue-400 mb-1 block">Loading
+                                    subject information...</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="subject-container">
-                <p id="subject" class="subject subject-placeholder">Subject will
-                    appear here...</p>
-            </div>
-
-            <div class="controls">
-                <select id="tone">
-                    <option value>Select Tone</option>
-                    <option value="professional">Professional</option>
-                    <option value="casual">Casual</option>
-                    <option value="humorous">Humorous</option>
-                    <option value="formal">Formal</option>
-                </select>
-
-                <select id="language">
-                    <option value>Select Language</option>
-                    <option value="english">English</option>
-                    <option value="hindi">Hindi</option>
-                    <option value="marathi">Marathi</option>
-                    <option value="german">German</option>
-                </select>
-
-                <select id="tweetLike">
-                    <option value>Select Tweet Style</option>
-                    <option value="None">None</option>
-                    <option value="elon">Elon Musk</option>
-                    <option value="obama">Barack Obama</option>
-                    <option value="swift">Taylor Swift</option>
-                    <option value="cook">Tim Cook</option>
-                    <option value="other">Others</option>
-                </select>
-
-                <div id="customTweetInput" class="custom-tweet-input">
-                    <input
-                        type="text"
-                        id="customTweetStyle"
-                        placeholder="Enter the name of the person whose tweet style you want to imitate">
+                <div
+                    class="text-center p-4 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200 mb-6">
+                    <p id="subject"
+                        class="text-xl font-semibold text-gray-400 italic">Subject
+                        will appear here...</p>
                 </div>
 
-                <button id="generateBtn">Generate Tweet</button>
-            </div>
+                <div class="space-y-4 mb-6">
+                    <select id="tone"
+                        class="w-full p-3 border-2 border-gray-200 rounded-lg text-base focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition">
+                        <option value>Select Tone</option>
+                        <option value="professional">Professional</option>
+                        <option value="casual">Casual</option>
+                        <option value="humorous">Humorous</option>
+                        <option value="formal">Formal</option>
+                    </select>
 
-            <div class="output">
-                <p class="placeholder">Your generated tweet will appear
-                    here...</p>
-                <button class="copy-button">Copy Tweet</button>
-                <a class="twitter-share-button" target="_blank"
-                    style="display: none;">
-                    Share on Twitter!</a>
+                    <select id="language"
+                        class="w-full p-3 border-2 border-gray-200 rounded-lg text-base focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition">
+                        <option value>Select Language</option>
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="marathi">Marathi</option>
+                        <option value="german">German</option>
+                    </select>
+
+                    <select id="tweetLike"
+                        class="w-full p-3 border-2 border-gray-200 rounded-lg text-base focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition">
+                        <option value>Select Tweet Style</option>
+                        <option value="None">None</option>
+                        <option value="elon">Elon Musk</option>
+                        <option value="obama">Barack Obama</option>
+                        <option value="swift">Taylor Swift</option>
+                        <option value="cook">Tim Cook</option>
+                        <option value="other">Others</option>
+                    </select>
+
+                    <div id="customTweetInput" class="hidden">
+                        <input type="text" id="customTweetStyle"
+                            placeholder="Enter the name of the person whose tweet style you want to imitate"
+                            class="w-full p-3 border-2 border-gray-200 rounded-lg text-base focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition">
+                    </div>
+
+                    <button id="generateBtn"
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-full transition-colors flex items-center justify-center">
+                        <span class="inline-flex items-center">
+                            <svg id="generateSpinner"
+                                class="animate-spin -ml-1 mr-3 h-5 w-5 text-white hidden"
+                                xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12"
+                                    r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <span id="generateBtnText">Generate Tweet</span>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="output hidden">
+                    <div class="p-4 border-2 border-gray-200 rounded-xl bg-white">
+                        <p class="text-black-500 italic mb-4">Your generated
+                            tweet will appear here...</p>
+                        <div class="flex gap-4">
+                            <button
+                                class="copy-button hidden px-4 py-2 border border-blue-500 text-blue-500 rounded-full hover:bg-blue-50 transition-colors text-sm font-medium">
+                                Copy Tweet
+                            </button>
+                            <a
+                                class="twitter-share-button hidden px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-500 transition-colors text-sm font-medium"
+                                target="_blank">
+                                Share on Twitter!
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -479,33 +152,26 @@ function getQueryParam(param) {
         }
 
         const subjectId = getQueryParam('id');
-        // Function to fetch subject information from API
+
         async function fetchSubjectInfo() {
-            
             if (!subjectId) {
                 console.error('No subject ID provided');
                 return;
             }
 
             try {
-                // Replace this URL with your actual API endpoint
                 const response = await fetch(`https://8y2icv8g22.execute-api.ap-south-1.amazonaws.com/v1/hashtags?id=${subjectId}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch subject information');
-                }
+                if (!response.ok) throw new Error('Failed to fetch subject information');
 
                 const res = await response.json();
-                const data = res.hashtags[0]
-                // console.log(data);
-                
+                const data = res.hashtags[0];
                 updateBackgroundSection(data);
                 updateSubject(data.subject);
             } catch (error) {
                 console.error('Error fetching subject information:', error);
-                // Show error state in the UI
                 document.getElementById('backgroundInfo').innerHTML = `
-                    <div class="background-info">
-                        <p>Failed to load subject information. Please try again later.</p>
+                    <div class="p-4">
+                        <p class="text-red-500">Failed to load subject information. Please try again later.</p>
                     </div>
                 `;
             }
@@ -513,30 +179,48 @@ function getQueryParam(param) {
 
         function updateBackgroundSection(data) {
             const backgroundHtml = `
-                <div class="background-info">
-                    <label>Title</label>
-                    <p>${data.subject}</p>
-                </div>
-                <div class="background-info">
-                    <label>Description</label>
-                    <p>${data.description}</p>
-                </div>
-                <div class="background-info">
-                    <label>Category</label>
-                    <p><span class="category-tag">${data.category}</span></p>
+                <div class="p-4 space-y-4">
+                    <div class="background-info">
+                        <label class="text-sm font-semibold text-blue-400 mb-1 block">Title</label>
+                        <p class="text-gray-900">${data.subject}</p>
+                    </div>
+                    <div class="background-info">
+                        <label class="text-sm font-semibold text-blue-400 mb-1 block">Description</label>
+                        <p class="text-gray-900">${data.description}</p>
+                    </div>
+                    <div class="background-info">
+                        <label class="text-sm font-semibold text-blue-400 mb-1 block">Category</label>
+                        <span class="inline-block px-3 py-1 bg-blue-400 text-white rounded-full text-sm">${data.category}</span>
+                    </div>
                 </div>
             `;
             
             document.getElementById('backgroundInfo').innerHTML = backgroundHtml;
-            document.querySelector('#subject').textContent = data.subject
+            document.querySelector('#subject').textContent = data.subject;
+            document.querySelector('#subject').classList.remove('text-gray-400', 'italic');
+            document.querySelector('#subject').classList.add('text-gray-900');
         }
 
         function initializeBackgroundSection() {
-            const section = document.querySelector('.background-section');
-            const header = section.querySelector('h2');
+            const header = document.getElementById('background-header');
+            const content = document.getElementById('backgroundInfo');
+            const arrow = document.getElementById('arrow');
+            let isCollapsed = true;
+
+            content.style.maxHeight = '0';
+            content.style.padding = '0';
             
             header.addEventListener('click', () => {
-                section.classList.toggle('collapsed');
+                isCollapsed = !isCollapsed;
+                if (isCollapsed) {
+                    content.style.maxHeight = '0';
+                    content.style.padding = '0';
+                    arrow.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.maxHeight = '24rem';
+                    content.style.padding = '1rem';
+                    arrow.style.transform = 'rotate(180deg)';
+                }
             });
         }
 
@@ -618,14 +302,17 @@ function getQueryParam(param) {
             }
         }
 
-        document.getElementById('generateBtn').addEventListener('click', async function() {
+        document.getElementById('generateBtn').addEventListener('click', async function(event) {
+            event.preventDefault();
+            const spinner = document.getElementById('generateSpinner');
+            const btnText = document.getElementById('generateBtnText');
+            const generateBtn = document.getElementById('generateBtn');
+            
             // Get all our input values
-            event.preventDefault()
             const tone = document.getElementById('tone').value;
             const language = document.getElementById('language').value;
             const tweetLikeSelect = document.getElementById('tweetLike');
             const customTweetStyle = document.getElementById('customTweetStyle');
-            const subject = document.getElementById('subject').textContent;
             
             // Get the tweet style - either from dropdown or custom input
             let tweetLike = tweetLikeSelect.value;
@@ -637,7 +324,7 @@ function getQueryParam(param) {
                 }
             }
             else if(tweetLike === "None"){
-                tweetLike == ""
+                tweetLike = "";
             }
 
             // Validate required selections
@@ -647,11 +334,13 @@ function getQueryParam(param) {
             }
 
             // Show loading state
+            spinner.classList.remove('hidden');
+            generateBtn.disabled = true;
             const output = document.querySelector('.output');
             const outputText = output.querySelector('p');
             output.style.display = 'block';
             outputText.classList.remove('placeholder');
-            outputText.textContent = 'Generating your tweet...';
+            outputText.textContent = '';
 
             try {
                 // Prepare parameters for the API call
@@ -659,34 +348,31 @@ function getQueryParam(param) {
                     id: subjectId,
                     tone: tone,
                     lang: language,
-                    tweet_like: tweetLike || null, // Send null if no style is selected
-                    // Add any other parameters your API needs
+                    tweet_like: tweetLike || null,
                 };
-                console.log(params);
                 
                 // Call the API and get the generated tweet
                 const generatedTweet = await generateTweetFromAPI(params);
-                const copyButton = document.querySelector('.copy-button')
-                const tweetBtn = document.querySelector(".twitter-share-button")
+                const copyButton = document.querySelector('.copy-button');
+                const tweetBtn = document.querySelector(".twitter-share-button");
+                
                 // Update the UI with the generated tweet
                 copyButton.style.display = 'inline-block';
                 outputText.textContent = generatedTweet;
-                tweetBtn.style.display = 'inline-block'
-                tweetBtn.href = `https://twitter.com/intent/tweet?text=${generatedTweet}`
+                tweetBtn.style.display = 'inline-block';
+                tweetBtn.href = `https://twitter.com/intent/tweet?text=${generatedTweet}`;
                 initializeCopyButton();
             } catch (error) {
                 console.error('Error generating tweet:', error);
-                
-                // Show error message to user
                 outputText.textContent = 'Sorry, there was an error generating your tweet. Please try again.';
-                
-                // Add error styling if desired
-                outputText.style.color = '#e0245e'; // Twitter's red color for errors
-                
-                // Reset error styling after 5 seconds
+                outputText.style.color = '#e0245e';
                 setTimeout(() => {
                     outputText.style.color = '#14171a';
                 }, 5000);
+            } finally {
+                // Hide spinner and re-enable button
+                spinner.classList.add('hidden');
+                generateBtn.disabled = false;
             }
         });
 
