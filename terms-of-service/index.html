@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en" class="tw-scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRESSGEN.AI - Terms of Service</title>
+    <meta name="description" content="Review the Terms of Service for PRESSGEN.AI. Understand the rules and guidelines for using our AI-powered citizen journalism platform." />
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://placehold.co/32x32/4F46E5/FFFFFF?text=P" type="image/x-icon" />
+    <link rel="icon" href="../assets/logo/logo_icon.png" type="image/x-icon" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com/terms" />
+    <meta property="og:title" content="PRESSGEN.AI - Terms of Service" />
+    <meta property="og:description" content="Review the Terms of Service for PRESSGEN.AI. Understand the rules and guidelines for using our AI-powered citizen journalism platform." />
+    <meta property="og:image" content="https://placehold.co/1200x630/4F46E5/FFFFFF?text=PRESSGEN.AI" />
+
+    <!-- Local Tailwind CSS -->
+    <link rel="stylesheet" href="../tailwind-build.css">
+    <link rel="stylesheet" href="../css/index.css" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" xintegrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            /* Tailwind's indigo-600 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            /* slate-50 */
+        }
+
+        .header-gradient {
+            background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.08), transparent 50%);
+        }
+
+        .text-primary {
+            color: var(--primary-color);
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        .border-primary {
+            border-color: var(--primary-color);
+        }
+
+        .footer-link {
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animation for revealing content on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Prose styling overrides for better readability */
+        .prose-custom h2 {
+            scroll-margin-top: 100px; /* Offset for sticky header */
+        }
+        .prose-custom a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .prose-custom a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        
+        /* Sidebar active link style */
+        .toc-link.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="tw-flex tw-min-h-screen tw-flex-col tw-text-gray-800 tw-antialiased">
+
+    <!-- Background Decoration -->
+    <div class="tw-absolute tw-top-0 tw-left-0 -tw-z-10 tw-h-96 tw-w-full">
+        <div class="header-gradient tw-h-full tw-w-full"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="tw-sticky tw-top-0 tw-z-30 tw-flex tw-h-20 tw-w-full tw-items-center tw-justify-between tw-border-b tw-border-slate-200/50 tw-bg-white/80 tw-px-4 tw-backdrop-blur-lg sm:tw-px-8 lg:tw-px-16">
+        <a href="../" class="tw-flex-shrink-0">
+            <img src="../assets/logo/pressgenai_bgremoved.png" alt="PressGenAI Logo" class="tw-h-12 tw-w-auto tw-object-contain" />
+        </a>
+        <nav class="tw-hidden md:tw-flex tw-items-center tw-gap-8">
+            <a href="../" class="tw-font-medium tw-text-gray-600 hover:tw-text-primary tw-transition-colors">Home</a>
+            <a href="../#features" class="tw-font-medium tw-text-gray-600 hover:tw-text-primary tw-transition-colors">Features</a>
+            <a href="../#pricing" class="tw-font-medium tw-text-gray-600 hover:tw-text-primary tw-transition-colors">Pricing</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="tw-w-full tw-max-w-7xl tw-mx-auto tw-px-6 tw-py-16 lg:tw-py-24">
+        <div class="tw-lg:tw-grid tw-lg:tw-grid-cols-12 tw-lg:tw-gap-12">
+            
+            <!-- Side Navigation for ToS -->
+            <nav class="tw-hidden tw-lg:tw-block tw-lg:tw-col-span-3">
+                <div class="tw-sticky tw-top-28">
+                    <h3 class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-wider tw-text-gray-500">On this page</h3>
+                    <ul id="toc-nav" class="tw-mt-4 tw-space-y-3 tw-text-gray-700">
+                        <!-- Links will be dynamically generated by JS -->
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Terms of Service Article -->
+            <article class="tw-lg:tw-col-span-9">
+                <div class="tw-prose tw-prose-lg tw:prose-a:tw-text-blue-600 prose-custom tw-max-w-none">
+                    <header class="tw-mb-12 tw-pb-8 tw-border-b">
+                        <h1 class="tw-text-4xl tw-font-bold tw-tracking-tight tw-text-gray-900">Terms of Service</h1>
+                        <p class="tw-mt-3 tw-text-base tw-text-gray-600">Effective Date: <strong>September 4, 2025</strong></p>
+                        <p class="tw-mt-1 tw-text-base tw-text-gray-600">Company: <strong>Social-Impact Innovations Pvt. Ltd.</strong></p>
+                    </header>
+
+                    <p>Welcome to <strong>PressGenAI</strong>! By using our platform, you agree to these terms. Please read them carefully. If you do not agree, do not use the service.</p>
+
+                    <section id="accounts-access" class="reveal">
+                        <h2>1. Accounts &amp; Access</h2>
+                        <ul class="tw-list-decimal tw-pl-6 tw-space-y-2">
+                            <li>You can create an account using a valid email.</li>
+                            <li>Accounts must be verified before they become active.</li>
+                            <li>You are responsible for keeping your login details secure and for all activity that occurs under your account.</li>
+                        </ul>
+                    </section>
+
+                    <section id="services" class="reveal">
+                        <h2>2. Services</h2>
+                        <p>PressGenAI provides an AI-powered platform that enables users to:</p>
+                        <ul class="tw-space-y-2">
+                            <li>Submit articles and leads.</li>
+                            <li>Generate AI-assisted drafts through guided workflows.</li>
+                            <li>Have content reviewed and published via our platform or API by authorized editors.</li>
+                        </ul>
+                        <p>All AI-generated content is reviewed by editors before publishing.</p>
+                    </section>
+
+                    <section id="subscriptions-payments" class="reveal">
+                        <h2>3. Subscriptions &amp; Payments</h2>
+                        <ul class="tw-space-y-2">
+                            <li>Certain features or tiers may require a paid subscription.</li>
+                            <li>Payment processing is handled securely by third-party payment providers.</li>
+                            <li>Subscription fees are non-refundable unless explicitly stated otherwise in writing.</li>
+                        </ul>
+                    </section>
+
+                    <section id="user-content" class="reveal">
+                        <h2>4. User Content</h2>
+                        <p>You (and the media house you represent, if applicable) retain ownership of content you submit.</p>
+                        <p>By submitting content you grant PressGenAI a limited license to store, process, and display the content as required to provide the Service. We will only use your content for promotional or internal purposes with your explicit permission.</p>
+                    </section>
+
+                    <section id="prohibited-uses" class="reveal">
+                        <h2>5. Prohibited Uses</h2>
+                        <p>You agree not to use the Service to:</p>
+                        <ul class="tw-space-y-2">
+                            <li>Violate any applicable law, regulation, or third-party right.</li>
+                            <li>Post harmful, defamatory, obscene, or copyrighted content without permission.</li>
+                            <li>Attempt to disrupt, reverse-engineer, or gain unauthorized access to our systems.</li>
+                        </ul>
+                    </section>
+
+                    <section id="third-party-services" class="reveal">
+                        <h2>6. Third-Party Services</h2>
+                        <p>We may use third-party services (including AI API providers, analytics, hosting, and payment processors) to operate the Service. To provide the Service, certain user data may be shared with these providers under appropriate contractual terms.</p>
+                    </section>
+
+                    <section id="changes-terms" class="reveal">
+                        <h2>7. Changes to Terms</h2>
+                        <p>We may update these Terms from time to time. We will notify users of significant changes via email or in-product notifications. Continued use of the Service after notice constitutes acceptance of the updated Terms.</p>
+                    </section>
+
+                    <section id="limitation-liability" class="reveal">
+                        <h2>8. Limitation of Liability</h2>
+                        <p>PressGenAI is not responsible for errors, omissions, or harms arising from AI-generated drafts or user-submitted content. To the fullest extent permitted by law, we are not liable for any indirect, incidental, consequential, or punitive damages arising from your use of the Service.</p>
+                    </section>
+
+                    <section id="governing-law" class="reveal">
+                        <h2>9. Governing Law</h2>
+                        <p>These Terms are governed by the laws of India. Any disputes arising under or related to these Terms will be subject to the exclusive jurisdiction of the courts located in India, unless otherwise agreed in writing.</p>
+                    </section>
+
+                    <section id="contact" class="reveal">
+                        <h2>Contact Us</h2>
+                        <p>If you have questions about these Terms, please contact us:</p>
+                        <p><strong>Social-Impact Innovations Pvt. Ltd.</strong><br>
+                        Email: <a href="mailto:contact@social-impact.in">contact@social-impact.in</a></p>
+                    </section>
+
+                    <footer class="tw-mt-12 tw-pt-8 tw-border-t tw-text-sm tw-text-gray-600">
+                        <p>© <span id="currentYear"></span> Social-Impact Innovations Pvt. Ltd. All rights reserved.</p>
+                    </footer>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="tw-w-full tw-bg-slate-100 tw-text-gray-700">
+        <div class="tw-mx-auto tw-max-w-7xl tw-px-4 tw-py-16">
+            <div class="tw-grid tw-gap-12 md:tw-grid-cols-12">
+                <!-- Footer: About -->
+                <div class="md:tw-col-span-4">
+                    <a href="../">
+                        <img src="../assets/logo/pressgenai_bgremoved.png" alt="PressGenAI Banner" class="tw-h-16 tw-w-auto tw-object-contain" />
+                    </a>
+                    <p class="tw-mt-4 tw-text-gray-600">Empowering citizen journalism with artificial intelligence.</p>
+                    <!-- <div class="tw-mt-6 tw-flex tw-gap-4 tw-text-2xl">
+                        <a href="#" aria-label="Facebook" class="tw-text-gray-500 hover:tw-text-primary"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter" class="tw-text-gray-500 hover:tw-text-primary"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="Instagram" class="tw-text-gray-500 hover:tw-text-primary"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn" class="tw-text-gray-500 hover:tw-text-primary"><i class="bi bi-linkedin"></i></a>
+                    </div> -->
+                </div>
+
+                <!-- Footer: Links -->
+                <div class="md:tw-col-span-2">
+                    <h3 class="tw-font-semibold tw-text-gray-900">Product</h3>
+                    <ul class="tw-mt-4 tw-space-y-3">
+                        <li><a href="../#features" class="footer-link">Features</a></li>
+                        <li><a href="../#pricing" class="footer-link">Pricing</a></li>
+                        <li><a href="../#contact" class="footer-link">Request Demo</a></li>
+                    </ul>
+                </div>
+                <div class="md:tw-col-span-2">
+                    <h3 class="tw-font-semibold tw-text-gray-900">Company</h3>
+                    <ul class="tw-mt-4 tw-space-y-3">
+                        <li><a href="../about" class="footer-link">About Us</a></li>
+                        <li><a href="../#contact" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="md:tw-col-span-2">
+                    <h3 class="tw-font-semibold tw-text-gray-900">Legal</h3>
+                    <ul class="tw-mt-4 tw-space-y-3">
+                        <li><a href="../privacy-policy" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tw-mt-12 tw-border-t tw-border-gray-200 tw-pt-8 tw-text-center tw-text-sm tw-text-gray-500">
+                <p>&copy; <span id="footerCurrentYear"></span> PRESSGEN.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Consolidated JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. Dynamic Year Update ---
+            const currentYear = new Date().getFullYear();
+            const yearElements = [document.getElementById('currentYear'), document.getElementById('footerCurrentYear')];
+            yearElements.forEach(el => {
+                if (el) el.textContent = currentYear;
+            });
+
+            // --- 2. Reveal on Scroll Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // --- 3. Dynamic Table of Contents & Active Scrolling ---
+            const tocNav = document.getElementById('toc-nav');
+            const article = document.querySelector('article');
+            if (tocNav && article) {
+                const headings = article.querySelectorAll('h2');
+                const tocLinks = [];
+
+                // Create ToC links
+                headings.forEach(heading => {
+                    const id = heading.parentElement.id;
+                    if (id) {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = `#${id}`;
+                        a.textContent = heading.textContent;
+                        a.className = 'toc-link tw-transition-colors hover:tw-text-primary';
+                        a.dataset.targetId = id; // Store target ID for highlighting
+                        li.appendChild(a);
+                        tocNav.appendChild(li);
+                        tocLinks.push(a);
+                    }
+                });
+
+                // Highlight active link on scroll
+                const headingObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const targetId = entry.target.id;
+                        const correspondingLink = tocNav.querySelector(`.toc-link[data-target-id="${targetId}"]`);
+                        
+                        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                            tocLinks.forEach(link => link.classList.remove('active'));
+                            if (correspondingLink) {
+                                correspondingLink.classList.add('active');
+                            }
+                        }
+                    });
+                }, { rootMargin: '-100px 0px -50% 0px', threshold: 0.5 });
+
+                headings.forEach(heading => {
+                    const section = heading.parentElement;
+                    if(section.id) {
+                        headingObserver.observe(section);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
