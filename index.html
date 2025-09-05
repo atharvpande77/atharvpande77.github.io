@@ -860,7 +860,7 @@
                             Empowering citizen journalism with artificial
                             intelligence.
                         </p>
-                        <div class="tw-mt-6 tw-flex tw-gap-4 tw-text-2xl">
+                        <!-- <div class="tw-mt-6 tw-flex tw-gap-4 tw-text-2xl">
                             <a href="#" aria-label="Facebook"
                                 class="tw-text-gray-500 hover:tw-text-primary"><i
                                     class="bi bi-facebook"></i></a>
@@ -873,7 +873,7 @@
                             <a href="#" aria-label="LinkedIn"
                                 class="tw-text-gray-500 hover:tw-text-primary"><i
                                     class="bi bi-linkedin"></i></a>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- Footer: Links -->
@@ -937,6 +937,7 @@
         const workEmailInput = document.getElementById('work-email');
         const newsOrganizationInput = document.getElementById('news-organization');
         // const messageInput = document.getElementById('message');
+        const submitButton = document.querySelector('#contact-form button[type="submit"]');
 
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -951,6 +952,10 @@
                 phone_number: phoneNumberInput.value.trim() || ""
                 // message: messageInput.value.trim() || ""
             };
+
+
+            submitButton.disabled = true;
+            submitButton.textContent = "...";
 
             fetch('https://qtviovrem3.execute-api.ap-south-1.amazonaws.com/v1/contact', {
                 method: 'POST',
@@ -973,6 +978,8 @@
                     workEmailInput.value = '';
                     newsOrganizationInput.value = '';
                     // messageInput.value = '';
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Send Message";
                 } else {
                     formMessage.textContent = "❌ There was an issue submitting the form. Please try again later.";
                     formMessage.className = "tw-text-red-600 tw-text-sm tw-mt-3";
