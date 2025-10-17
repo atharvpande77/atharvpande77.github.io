@@ -905,7 +905,7 @@
                         <h3
                             class="tw-font-semibold tw-text-gray-900">Company</h3>
                         <ul class="tw-mt-4 tw-space-y-3">
-                            <li><a href="https://social-impact.in" class="footer-link">About
+                            <li><a href="https://rankjunction.com" class="footer-link" target="_blank">About
                                     Us</a></li>
                             <!-- <li><a href="#" class="footer-link">Careers</a></li> -->
                             <li><a href="#" class="footer-link">Contact
@@ -924,7 +924,7 @@
                 </div>
                 <div
                     class="tw-mt-12 tw-border-t tw-border-gray-200 tw-pt-8 tw-text-center tw-text-sm tw-text-gray-500">
-                    <p>&copy; 2025 PRESSGEN.AI. All rights reserved.</p>
+                    <p>&copy; <span id="copyright-year"></span>  RankJunction Private Limited. All rights reserved.</p>
                 </div>
             </div>
         </footer>
@@ -997,6 +997,9 @@
 
 
         document.addEventListener('DOMContentLoaded', function() {
+            const copyrightYear = document.getElementById('copyright-year');
+            const currentYear = new Date().getFullYear();
+            copyrightYear.textContent = currentYear;
             const revealElements = document.querySelectorAll('.reveal');
 
             const observer = new IntersectionObserver((entries) => {
