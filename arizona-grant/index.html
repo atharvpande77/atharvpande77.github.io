@@ -1,0 +1,1739 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      ALNF Grant Partnership — PressGenAI | Grant-Funded Hyperlocal Platform for
+      Arizona Newsrooms
+    </title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/meta/favicon.ico" />
+
+    <!-- PNG Favicons -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/meta/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/meta/favicon-32x32.png" />
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/meta/apple-touch-icon.png" />
+
+    <!-- Android / PWA Icons -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="assets/meta/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/meta/android-chrome-512x512.png"
+    />
+
+    <!-- Web Manifest -->
+    <link rel="manifest" href="assets/meta/site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #ffffff;
+        --bg2: #f5f6fc;
+        --bg3: #eceef8;
+        --navy: #1a1f5e;
+        --navy2: #0f1340;
+        --blue: #4b5ffa;
+        --purple: #7b5cfa;
+        --green: #059669;
+        --green2: #10b981;
+        --green-bg: rgba(5, 150, 105, 0.07);
+        --green-bdr: rgba(5, 150, 105, 0.2);
+        --amber: #d97706;
+        --amber-bg: rgba(217, 119, 6, 0.08);
+        --amber-bdr: rgba(217, 119, 6, 0.2);
+        --text: #1a1f5e;
+        --text2: #5a6380;
+        --text3: #9aa3c0;
+        --border: rgba(26, 31, 94, 0.08);
+        --border2: rgba(26, 31, 94, 0.14);
+        --grad: linear-gradient(135deg, #4b5ffa 0%, #7b5cfa 100%);
+        --grad-green: linear-gradient(135deg, #059669 0%, #0ea5e9 100%);
+        --shadow: 0 2px 24px rgba(75, 95, 250, 0.1);
+        --shadow2: 0 8px 48px rgba(75, 95, 250, 0.14);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* DEADLINE TICKER */
+      .deadline-bar {
+        background: var(--navy2);
+        text-align: center;
+        padding: 10px 24px;
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 0.3px;
+      }
+      .deadline-bar .highlight {
+        color: #fcd34d;
+        font-weight: 700;
+      }
+      .deadline-bar .dot {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        background: #10b981;
+        border-radius: 50%;
+        margin: 0 10px;
+        animation: blink 1.5s ease infinite;
+        vertical-align: middle;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.2;
+        }
+      }
+
+      /* NAV */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 60px;
+        height: 64px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-logo .brand-logo {
+        width: 260px;
+      }
+
+      .nav-logo-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--grad);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+      }
+
+      .nav-logo span {
+        background: var(--grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .nav-pill {
+        background: var(--green-bg);
+        border: 1px solid var(--green-bdr);
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 6px 14px;
+        border-radius: 100px;
+      }
+      .nav-cta {
+        background: var(--grad-green);
+        color: white;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 9px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: opacity 0.2s;
+      }
+      .nav-cta:hover {
+        opacity: 0.85;
+      }
+
+      /* HERO */
+      .hero {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        gap: 72px;
+        align-items: center;
+        padding: 80px 60px 96px;
+        border-bottom: 1px solid var(--border);
+        background: linear-gradient(160deg, #fafbff 0%, #ffffff 60%);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(5, 150, 105, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--green-bg);
+        border: 1px solid var(--green-bdr);
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 7px 16px;
+        border-radius: 100px;
+        margin-bottom: 24px;
+        animation: fadeUp 0.6s ease forwards;
+      }
+      .hero-badge::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        background: var(--green2);
+        border-radius: 50%;
+        animation: blink 1.5s ease infinite;
+      }
+
+      .hero-headline {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(38px, 4.2vw, 60px);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -2px;
+        color: var(--navy);
+        margin-bottom: 20px;
+        animation: fadeUp 0.7s ease forwards 0.1s;
+        opacity: 0;
+      }
+      .grad-green {
+        background: var(--grad-green);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-sub {
+        font-size: 17px;
+        line-height: 1.8;
+        color: var(--text2);
+        max-width: 520px;
+        margin-bottom: 32px;
+        animation: fadeUp 0.7s ease forwards 0.2s;
+        opacity: 0;
+      }
+      .hero-sub strong {
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      .hero-value-box {
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 32px;
+        animation: fadeUp 0.7s ease forwards 0.3s;
+        opacity: 0;
+      }
+      .hero-value-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        color: var(--text2);
+        padding: 6px 0;
+      }
+      .hero-value-row:not(:last-child) {
+        border-bottom: 1px solid var(--border);
+      }
+      .hero-value-icon {
+        font-size: 16px;
+        flex-shrink: 0;
+      }
+      .hero-value-row strong {
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      .hero-ctas {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        animation: fadeUp 0.7s ease forwards 0.4s;
+        opacity: 0;
+      }
+      .btn-primary-green {
+        background: var(--grad-green);
+        color: white;
+        padding: 15px 32px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 6px 24px rgba(5, 150, 105, 0.28);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .btn-primary-green:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px rgba(5, 150, 105, 0.36);
+      }
+      .btn-outline {
+        color: var(--text2);
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+        border-bottom: 1px solid var(--border2);
+        padding-bottom: 2px;
+        transition: color 0.2s;
+      }
+      .btn-outline:hover {
+        color: var(--navy);
+      }
+
+      /* GRANT CARD (right column) */
+      .grant-card {
+        background: white;
+        border: 1.5px solid var(--border2);
+        border-radius: 20px;
+        border-top: 4px solid var(--green);
+        padding: 40px 36px;
+        box-shadow:
+          0 12px 56px rgba(5, 150, 105, 0.1),
+          0 2px 16px rgba(0, 0, 0, 0.04);
+        animation: fadeUp 0.8s ease forwards 0.25s;
+        opacity: 0;
+      }
+      .grant-card-eyebrow {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .grant-card-eyebrow::before {
+        content: "";
+        width: 16px;
+        height: 2px;
+        background: var(--green);
+        border-radius: 2px;
+      }
+      .grant-card-title {
+        font-family: "Sora", sans-serif;
+        font-size: 21px;
+        font-weight: 800;
+        color: var(--navy);
+        margin-bottom: 8px;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+      }
+      .grant-card-sub {
+        font-size: 13px;
+        color: var(--text2);
+        margin-bottom: 28px;
+        line-height: 1.6;
+      }
+
+      .grant-rows {
+        margin-bottom: 28px;
+      }
+      .grant-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 11px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 13px;
+      }
+      .grant-row:last-child {
+        border-bottom: none;
+      }
+      .grant-row-key {
+        color: var(--text3);
+      }
+      .grant-row-val {
+        font-weight: 600;
+        color: var(--navy);
+        text-align: right;
+      }
+      .grant-row-val.green {
+        color: var(--green);
+      }
+      .grant-row-val.big {
+        font-family: "Sora", sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        background: var(--grad-green);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .grant-card-cta {
+        display: block;
+        text-align: center;
+        background: var(--grad-green);
+        color: white;
+        padding: 14px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: opacity 0.2s;
+        box-shadow: 0 4px 18px rgba(5, 150, 105, 0.24);
+      }
+      .grant-card-cta:hover {
+        opacity: 0.87;
+      }
+      .grant-card-note {
+        text-align: center;
+        font-size: 11px;
+        color: var(--text3);
+        margin-top: 10px;
+      }
+
+      /* WHAT WE DEPLOY */
+      .deploy-section {
+        padding: 96px 60px;
+        border-bottom: 1px solid var(--border);
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .section-label::before {
+        content: "";
+        width: 18px;
+        height: 2px;
+        background: var(--grad-green);
+        border-radius: 2px;
+      }
+      .section-headline {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(28px, 3.5vw, 46px);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -1.5px;
+        color: var(--navy);
+        margin-bottom: 14px;
+      }
+      .section-sub {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--text2);
+        max-width: 560px;
+        margin-bottom: 56px;
+      }
+
+      .deploy-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .deploy-card {
+        background: white;
+        padding: 40px 32px;
+        position: relative;
+        transition: background 0.25s;
+      }
+      .deploy-card:hover {
+        background: var(--bg2);
+      }
+      .deploy-card-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--grad-green);
+      }
+      .deploy-card-num {
+        font-family: "Sora", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        background: var(--grad-green);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+        margin-bottom: 14px;
+      }
+      .deploy-card-title {
+        font-family: "Sora", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 10px;
+      }
+      .deploy-card-desc {
+        font-size: 13px;
+        line-height: 1.75;
+        color: var(--text2);
+      }
+
+      /* WHAT'S INCLUDED */
+      .included-section {
+        padding: 96px 60px;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+      }
+      .included-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 48px;
+      }
+      .included-card {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 32px 28px;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .included-card:hover {
+        border-color: rgba(5, 150, 105, 0.2);
+        box-shadow: 0 4px 24px rgba(5, 150, 105, 0.08);
+      }
+      .included-icon {
+        font-size: 26px;
+        margin-bottom: 14px;
+      }
+      .included-title {
+        font-family: "Sora", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 8px;
+      }
+      .included-desc {
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text2);
+      }
+      .included-tag {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--green);
+        background: var(--green-bg);
+        border: 1px solid var(--green-bdr);
+        padding: 3px 10px;
+        border-radius: 100px;
+        margin-bottom: 12px;
+      }
+
+      /* COST BREAKDOWN */
+      .cost-section {
+        padding: 96px 60px;
+        border-bottom: 1px solid var(--border);
+      }
+      .cost-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 72px;
+        align-items: start;
+        margin-top: 48px;
+      }
+      .cost-table {
+        width: 100%;
+      }
+      .cost-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 14px;
+      }
+      .cost-row:last-child {
+        border-bottom: none;
+      }
+      .cost-item {
+        color: var(--text2);
+      }
+      .cost-item strong {
+        color: var(--navy);
+        font-weight: 600;
+        display: block;
+        font-size: 14px;
+      }
+      .cost-item span {
+        font-size: 12px;
+      }
+      .cost-amount {
+        font-weight: 700;
+        color: var(--navy);
+        text-align: right;
+        white-space: nowrap;
+      }
+      .cost-total-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        padding: 16px 0;
+        margin-top: 4px;
+        background: var(--green-bg);
+        border: 1px solid var(--green-bdr);
+        border-radius: 8px;
+        padding: 16px 20px;
+      }
+      .cost-total-label {
+        font-weight: 700;
+        color: var(--green);
+        font-size: 15px;
+      }
+      .cost-total-amount {
+        font-family: "Sora", sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--green);
+      }
+
+      .cost-note-card {
+        background: var(--navy2);
+        border-radius: 16px;
+        padding: 36px 32px;
+      }
+      .cost-note-title {
+        font-family: "Sora", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 14px;
+        line-height: 1.3;
+      }
+      .cost-note-body {
+        font-size: 14px;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .cost-note-body strong {
+        color: white;
+        font-weight: 600;
+      }
+      .cost-note-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+        margin: 20px 0;
+      }
+      .cost-note-highlight {
+        font-size: 13px;
+        color: rgba(16, 185, 129, 0.8);
+        font-weight: 600;
+        line-height: 1.7;
+      }
+
+      /* SOCIAL PROOF */
+      .proof-section {
+        padding: 96px 60px;
+        background: var(--navy2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .proof-section .section-label {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .proof-section .section-label::before {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .proof-section .section-headline {
+        color: white;
+      }
+      .proof-section .section-sub {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .proof-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 40px;
+        margin-top: 48px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .proof-logo-block {
+        text-align: center;
+        min-width: 160px;
+      }
+      .proof-logo-text {
+        font-family: "Sora", sans-serif;
+        font-size: 32px;
+        font-weight: 800;
+        color: white;
+        line-height: 1;
+        margin-bottom: 6px;
+        letter-spacing: -1px;
+      }
+      .proof-logo-sub {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: var(--grad-green);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .proof-divider {
+        width: 1px;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.08);
+        align-self: stretch;
+      }
+
+      .proof-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+      .proof-stat-num {
+        font-family: "Sora", sans-serif;
+        font-size: 32px;
+        font-weight: 800;
+        background: var(--grad-green);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+        margin-bottom: 6px;
+        letter-spacing: -1px;
+      }
+      .proof-stat-label {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.35);
+        line-height: 1.5;
+      }
+      .proof-quote {
+        grid-column: 1/-1;
+        margin-top: 16px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1.8;
+        font-style: italic;
+      }
+
+      /* GRANT LANGUAGE */
+      .language-section {
+        padding: 96px 60px;
+        border-bottom: 1px solid var(--border);
+      }
+      .language-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 72px;
+        align-items: start;
+        margin-top: 48px;
+      }
+      .language-left h3 {
+        font-family: "Sora", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 14px;
+        line-height: 1.3;
+      }
+      .language-left p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--text2);
+      }
+      .language-list {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .language-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13px;
+        color: var(--text2);
+      }
+      .language-item::before {
+        content: "✓";
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--green);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .copy-box {
+        background: var(--navy2);
+        border-radius: 16px;
+        overflow: hidden;
+      }
+      .copy-header {
+        padding: 14px 22px;
+        background: rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .copy-header-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .copy-header-label::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green2);
+        animation: blink 1.5s ease infinite;
+      }
+      .copy-ready {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        background: var(--green-bg);
+        color: var(--green2);
+        border: 1px solid var(--green-bdr);
+        padding: 3px 10px;
+        border-radius: 100px;
+      }
+      .copy-body {
+        padding: 28px 24px;
+      }
+      .copy-text {
+        font-size: 13.5px;
+        line-height: 2;
+        color: rgba(255, 255, 255, 0.58);
+        font-style: italic;
+        border-left: 2px solid var(--green2);
+        padding-left: 18px;
+        margin-bottom: 24px;
+      }
+      .copy-text strong {
+        color: rgba(255, 255, 255, 0.88);
+        font-weight: 600;
+        font-style: normal;
+      }
+      .copy-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--green-bg);
+        border: 1px solid var(--green-bdr);
+        color: var(--green2);
+        padding: 10px 18px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: background 0.2s;
+        font-family: "Inter", sans-serif;
+      }
+      .copy-btn:hover {
+        background: rgba(16, 185, 129, 0.14);
+      }
+
+      /* STEPS */
+      .steps-section {
+        padding: 96px 60px;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+      }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 48px;
+      }
+      .step {
+        background: white;
+        padding: 40px 28px;
+        position: relative;
+        transition: background 0.25s;
+      }
+      .step:hover {
+        background: var(--bg3);
+      }
+      .step-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--grad-green);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .step:hover .step-bar {
+        transform: scaleX(1);
+      }
+      .step-num {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: var(--text3);
+        margin-bottom: 18px;
+        display: block;
+      }
+      .step-icon {
+        font-size: 26px;
+        margin-bottom: 14px;
+        display: block;
+      }
+      .step-title {
+        font-family: "Sora", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 10px;
+      }
+      .step-desc {
+        font-size: 13px;
+        line-height: 1.75;
+        color: var(--text2);
+      }
+      .step-desc strong {
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      /* DEADLINE CTA */
+      .cta-section {
+        padding: 120px 60px;
+        text-align: center;
+        background: var(--navy2);
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px;
+        height: 500px;
+        background: radial-gradient(
+          ellipse,
+          rgba(5, 150, 105, 0.15) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .cta-inner {
+        position: relative;
+        z-index: 1;
+      }
+      .cta-section .section-label {
+        color: rgba(255, 255, 255, 0.35);
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .cta-section .section-label::before {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .cta-headline {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(40px, 5.5vw, 72px);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -3px;
+        color: white;
+        margin-bottom: 20px;
+      }
+      .cta-sub {
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.45);
+        max-width: 500px;
+        margin: 0 auto 48px;
+        line-height: 1.75;
+      }
+      .cta-btns {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-white {
+        background: white;
+        color: var(--navy2);
+        padding: 16px 36px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: transform 0.2s;
+      }
+      .btn-white:hover {
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: white;
+        padding: 16px 36px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        transition: background 0.2s;
+      }
+      .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .cta-deadline-note {
+        margin-top: 28px;
+        font-size: 12px;
+        color: rgba(16, 185, 129, 0.7);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      /* FOOTER */
+      footer {
+        background: #080b22;
+        padding: 48px 60px 32px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 48px;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .footer-logo {
+        font-family: "Sora", sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .footer-logo .brand-logo {
+        width: 300px;
+      }
+
+      .footer-logo span {
+        background: var(--grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .footer-tagline {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.25);
+        line-height: 1.6;
+        max-width: 220px;
+      }
+      .footer-col h4 {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.22);
+        margin-bottom: 14px;
+      }
+      .footer-col a {
+        display: block;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.32);
+        text-decoration: none;
+        margin-bottom: 8px;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .footer-bottom {
+        grid-column: 1/-1;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.18);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 900px) {
+        nav {
+          padding: 0 20px;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 60px 20px;
+        }
+        .deploy-grid,
+        .steps-grid {
+          grid-template-columns: 1fr;
+        }
+        .included-grid {
+          grid-template-columns: 1fr;
+        }
+        .cost-grid,
+        .language-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .proof-card {
+          grid-template-columns: 1fr;
+        }
+        .proof-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .deploy-section,
+        .included-section,
+        .cost-section,
+        .language-section,
+        .steps-section,
+        .proof-section,
+        .cta-section {
+          padding: 72px 20px;
+        }
+        footer {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding: 40px 20px 24px;
+        }
+        
+        .footer-bottom {
+          flex-direction: column;
+          gap: 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- DEADLINE TICKER -->
+    <div class="deadline-bar">
+      <span class="dot"></span>
+      ALNF Startup &amp; Innovation Grant &mdash; Application Deadline:
+      <span class="highlight">March 13, 2026</span> &mdash; We help you apply at
+      no cost
+      <span class="dot"></span>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+      <a href="#" class="nav-logo">
+        <img
+          src="./pressgenai_bgremoved.png"
+          alt="PressGenAI"
+          class="brand-logo"
+        />
+      </a>
+      <div class="nav-pill">&#127942; ALNF Grant Partnership</div>
+      <a href="#apply" class="nav-cta">Book Free Call &rarr;</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="hero-badge">
+          &#127942; ALNF Startup &amp; Innovation Grant &mdash; Up to $10,000
+        </div>
+        <h1 class="hero-headline">
+          Your newsroom gets a<br />full hyperlocal platform.<br /><span
+            class="grad-green"
+            >The grant pays for it.</span
+          >
+        </h1>
+        <p class="hero-sub">
+          We deploy a <strong>white-labelled PressGenAI platform</strong> for
+          your newsroom &mdash; custom domain, your branding, your city pages,
+          your citizen journalist portal. The ALNF grant covers the full cost.
+          <strong>You pay nothing.</strong>
+        </p>
+        <div class="hero-value-box">
+          <div class="hero-value-row">
+            <span class="hero-value-icon">&#127981;</span>
+            <span
+              >A <strong>fully white-labelled platform</strong> deployed under
+              your brand &amp; domain</span
+            >
+          </div>
+          <div class="hero-value-row">
+            <span class="hero-value-icon">&#128197;</span>
+            <span
+              ><strong>12 months</strong> of hosting, support &amp; onboarding
+              included</span
+            >
+          </div>
+          <div class="hero-value-row">
+            <span class="hero-value-icon">&#128221;</span>
+            <span
+              >We <strong>help write your grant application</strong> &mdash;
+              tech section included</span
+            >
+          </div>
+          <div class="hero-value-row">
+            <span class="hero-value-icon">&#128176;</span>
+            <span
+              ><strong>$0 out of pocket</strong> for your newsroom during the
+              grant year</span
+            >
+          </div>
+        </div>
+        <div class="hero-ctas">
+          <a href="#apply" class="btn-primary-green"
+            >Book a Free 20-Minute Call &rarr;</a
+          >
+          <a href="#what-we-deploy" class="btn-outline"
+            >See what we deploy &darr;</a
+          >
+        </div>
+      </div>
+
+      <div class="grant-card">
+        <div class="grant-card-eyebrow">Grant at a Glance</div>
+        <div class="grant-card-title">ALNF Startup &amp; Innovation Grant</div>
+        <div class="grant-card-sub">
+          For Arizona newsrooms investing in technology &mdash; you apply, your
+          newsroom receives the grant, you commission the deployment.
+        </div>
+        <div class="grant-rows">
+          <div class="grant-row">
+            <span class="grant-row-key">Offered by</span>
+            <span class="grant-row-val">Arizona Local News Foundation</span>
+          </div>
+          <div class="grant-row">
+            <span class="grant-row-key">Max award</span>
+            <span class="grant-row-val big">$10,000</span>
+          </div>
+          <div class="grant-row">
+            <span class="grant-row-key">Eligible use</span>
+            <span class="grant-row-val"
+              >Technology for digital storytelling</span
+            >
+          </div>
+          <div class="grant-row">
+            <span class="grant-row-key">Who can apply</span>
+            <span class="grant-row-val">Arizona newsrooms, 6+ months old</span>
+          </div>
+          <div class="grant-row">
+            <span class="grant-row-key">Application deadline</span>
+            <span class="grant-row-val green">March 13, 2026</span>
+          </div>
+          <div class="grant-row">
+            <span class="grant-row-key">Award notification</span>
+            <span class="grant-row-val">April 2026</span>
+          </div>
+          <div class="grant-row">
+            <span class="grant-row-key">Your cost</span>
+            <span class="grant-row-val green">$0</span>
+          </div>
+        </div>
+        <a href="#apply" class="grant-card-cta"
+          >I Want to Apply &mdash; Let&rsquo;s Talk &rarr;</a
+        >
+        <p class="grant-card-note">
+          Free call &middot; No commitment &middot; We help write the
+          application
+        </p>
+      </div>
+    </section>
+
+    <!-- WHAT WE DEPLOY -->
+    <div class="deploy-section" id="what-we-deploy">
+      <div class="section-label">What You&rsquo;re Getting</div>
+      <h2 class="section-headline">
+        Not a SaaS subscription.<br />A fully deployed platform.
+      </h2>
+      <p class="section-sub">
+        The distinction matters. We don&rsquo;t hand you login credentials and
+        leave. We build and deploy a complete hyperlocal news infrastructure,
+        branded as yours, from day one.
+      </p>
+      <div class="deploy-grid">
+        <div class="deploy-card">
+          <div class="deploy-card-bar"></div>
+          <div class="deploy-card-num">01</div>
+          <div class="deploy-card-title">White-Label Deployment</div>
+          <p class="deploy-card-desc">
+            Your platform lives on your domain (e.g. community.yoursite.com),
+            carries your masthead, your colours, your logo. Your readers never
+            see PressGenAI. They see you.
+          </p>
+        </div>
+        <div class="deploy-card">
+          <div class="deploy-card-bar"></div>
+          <div class="deploy-card-num">02</div>
+          <div class="deploy-card-title">Full Setup &amp; Onboarding</div>
+          <p class="deploy-card-desc">
+            We configure your city pages, news categories, editorial routing,
+            and contributor accounts. We train your editors and help onboard
+            your first wave of citizen journalists.
+          </p>
+        </div>
+        <div class="deploy-card">
+          <div class="deploy-card-bar"></div>
+          <div class="deploy-card-num">03</div>
+          <div class="deploy-card-title">12 Months Hosting &amp; Support</div>
+          <p class="deploy-card-desc">
+            Infrastructure, maintenance, updates, and support for the full grant
+            year. You focus on journalism. We handle the platform.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT'S INCLUDED -->
+    <div class="included-section">
+      <div class="section-label">Platform Features</div>
+      <h2 class="section-headline">
+        Everything your newsroom needs<br />to cover more ground.
+      </h2>
+      <div class="included-grid">
+        <div class="included-card">
+          <div class="included-tag">For Publishers</div>
+          <div class="included-icon">&#127981;</div>
+          <div class="included-title">City &amp; Community Pages</div>
+          <p class="included-desc">
+            A dedicated news page for every community you cover &mdash;
+            independently managed, under your brand. Add a new city anytime.
+          </p>
+        </div>
+        <div class="included-card">
+          <div class="included-tag">For Contributors</div>
+          <div class="included-icon">&#9999;&#65039;</div>
+          <div class="included-title">Citizen Journalist Portal</div>
+          <p class="included-desc">
+            Community contributors get their own portal to submit stories, get
+            AI writing assistance, and build a public profile with their
+            bylines.
+          </p>
+        </div>
+        <div class="included-card">
+          <div class="included-tag">For Editors</div>
+          <div class="included-icon">&#128202;</div>
+          <div class="included-title">Smart Editorial Dashboard</div>
+          <p class="included-desc">
+            Stories route automatically to the right editor by city and
+            category. Review, edit, approve &mdash; no inbox chaos, no WhatsApp
+            threads.
+          </p>
+        </div>
+        <div class="included-card">
+          <div class="included-tag">AI-Assisted</div>
+          <div class="included-icon">&#129302;</div>
+          <div class="included-title">AI Story Generation</div>
+          <p class="included-desc">
+            Contributors answer guided prompts and receive a complete,
+            publish-ready draft in your editorial voice. Editors review &mdash;
+            they don&rsquo;t rewrite from scratch.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT THE GRANT COVERS -->
+    <div class="cost-section">
+      <div class="section-label">What the Grant Covers</div>
+      <h2 class="section-headline">
+        Four deliverables.<br />Fully funded by the grant.
+      </h2>
+      <p class="section-sub" style="margin-bottom: 48px">
+        The ALNF grant funds a complete technology deployment &mdash; not a
+        subscription. Your newsroom receives four concrete, auditable
+        deliverables with clear outcomes.
+      </p>
+      <div class="deploy-grid">
+        <div class="deploy-card">
+          <div class="deploy-card-bar"></div>
+          <div class="deploy-card-num">&#10003;</div>
+          <div class="deploy-card-title">White-Label Platform Deployment</div>
+          <p class="deploy-card-desc">
+            Your domain, your branding, your masthead. A fully configured
+            hyperlocal news platform built and deployed under your
+            newsroom&rsquo;s identity.
+          </p>
+        </div>
+        <div class="deploy-card">
+          <div class="deploy-card-bar"></div>
+          <div class="deploy-card-num">&#10003;</div>
+          <div class="deploy-card-title">
+            Editor &amp; Contributor Onboarding
+          </div>
+          <p class="deploy-card-desc">
+            Live training for your editorial team, contributor intake setup, and
+            dedicated first-90-day support to get your newsroom fully
+            operational.
+          </p>
+        </div>
+        <div class="deploy-card">
+          <div class="deploy-card-bar"></div>
+          <div class="deploy-card-num">&#10003;</div>
+          <div class="deploy-card-title">12 Months Hosting &amp; Support</div>
+          <p class="deploy-card-desc">
+            Infrastructure, security, uptime monitoring, and technical support
+            for the full grant year. You focus on journalism &mdash; we handle
+            the platform.
+          </p>
+        </div>
+      </div>
+      <div
+        style="
+          margin-top: 32px;
+          padding: 24px 28px;
+          background: var(--green-bg);
+          border: 1px solid var(--green-bdr);
+          border-radius: 12px;
+          font-size: 14px;
+          line-height: 1.8;
+          color: var(--green);
+        "
+      >
+        <strong>Why this qualifies as a strong grant use of funds:</strong
+        >&nbsp; ALNF grants are designed for technology adoption with defined,
+        auditable deliverables. A full platform deployment &mdash; with
+        training, onboarding, and a year of support &mdash; produces a tangible,
+        lasting technology asset for your newsroom. It&rsquo;s not a
+        subscription; it&rsquo;s an infrastructure investment.
+      </div>
+    </div>
+
+    <!-- PROOF -->
+    <div class="proof-section">
+      <div class="section-label">Already Live</div>
+      <h2 class="section-headline">
+        This is a working platform.<br />Not a prototype.
+      </h2>
+      <p class="section-sub">
+        Before you apply, you can see exactly what you&rsquo;re getting &mdash;
+        because it&rsquo;s already running for a 106-year-old newspaper group in
+        India.
+      </p>
+      <div class="proof-card">
+        <div class="proof-logo-block">
+          <div class="proof-logo-text">
+            &#2340;&#2352;&#2369;&#2339; &#2349;&#2366;&#2352;&#2340;
+          </div>
+          <div class="proof-logo-sub">Tarun Bharat &middot; Est. 1919</div>
+        </div>
+        <div>
+          <div class="proof-stats">
+            <div>
+              <div class="proof-stat-num">106</div>
+              <div class="proof-stat-label">Years in print</div>
+            </div>
+            <div>
+              <div class="proof-stat-num">8</div>
+              <div class="proof-stat-label">Editions live on platform</div>
+            </div>
+            <div>
+              <div class="proof-stat-num">#7</div>
+              <div class="proof-stat-label">Marathi daily in India</div>
+            </div>
+            <div>
+              <div class="proof-stat-num">3</div>
+              <div class="proof-stat-label">States covered</div>
+            </div>
+          </div>
+          <div class="proof-quote">
+            One of India&rsquo;s oldest Marathi newspaper groups &mdash;
+            publishing since 1919 across Maharashtra, Karnataka, and Goa &mdash;
+            uses PressGenAI to run a white-labelled citizen journalism platform.
+            Real stories. Real bylines. Real editors approving content daily.
+            You can visit it now at
+            <a
+              href="https://sm.tarunbharat.net"
+              target="_blank"
+              style="color: rgba(16, 185, 129, 0.8); text-decoration: none"
+              >sm.tarunbharat.net</a
+            >.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRANT LANGUAGE -->
+    <div class="language-section">
+      <div class="section-label">Ready-to-Use Grant Language</div>
+      <h2 class="section-headline">
+        We&rsquo;ve already written<br />your tech section.
+      </h2>
+      <div class="language-grid">
+        <div class="language-left">
+          <h3>Copy it word for word. Or use it as a starting point.</h3>
+          <p>
+            Grant applications require precise, specific language about the
+            technology investment being proposed. Most newsrooms spend hours on
+            this. We&rsquo;ve done it already &mdash; because we&rsquo;ve built
+            the technology and can describe its capabilities precisely.
+          </p>
+          <div class="language-list">
+            <div class="language-item">
+              Describes a concrete technology deployment, not a vague &ldquo;AI
+              tool&rdquo;
+            </div>
+            <div class="language-item">
+              Connects directly to ALNF&rsquo;s digital storytelling mandate
+            </div>
+            <div class="language-item">
+              Shows community impact &mdash; more local voices, more coverage
+            </div>
+            <div class="language-item">
+              Positions the newsroom as accountable and strategic
+            </div>
+            <div class="language-item">
+              Avoids jargon that grant committees flag as vague
+            </div>
+          </div>
+        </div>
+        <div class="copy-box">
+          <div class="copy-header">
+            <div class="copy-header-label">
+              Suggested Grant Application Language
+            </div>
+            <span class="copy-ready">Ready to Use</span>
+          </div>
+          <div class="copy-body">
+            <div class="copy-text">
+              &ldquo;This grant will fund the deployment of
+              <strong>PressGenAI</strong>, a white-labelled hyperlocal news
+              platform that gives our newsroom the infrastructure to expand
+              local coverage across multiple communities simultaneously &mdash;
+              without expanding our editorial team.<br /><br />
+              PressGenAI provides community contributors with a structured story
+              submission portal and AI-assisted writing tools, editors with a
+              city- and category-wise review dashboard, and our brand with
+              dedicated city-specific news pages &mdash; all operating under our
+              existing domain and masthead. Readers see our brand. We control
+              all editorial decisions.<br /><br />
+              The grant will cover: platform deployment and white-labelling,
+              editor and contributor onboarding, 12 months of hosting and
+              operational support, and content infrastructure setup. This
+              investment will allow us to
+              <strong
+                >publish more local stories, engage more community voices, and
+                serve the communities we cover more deeply</strong
+              >
+              &mdash; with no ongoing technology cost after the grant
+              period.&rdquo;
+            </div>
+            <button class="copy-btn" onclick="copyGrantText()">
+              &#128203; Copy to Clipboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="steps-section" id="apply">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-headline">
+        Four steps from here<br />to a live platform.
+      </h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-bar"></div>
+          <span class="step-num">STEP 01</span>
+          <span class="step-icon">&#128222;</span>
+          <div class="step-title">We Talk</div>
+          <p class="step-desc">
+            20-minute call. We show you the live platform. You see the city
+            pages, the contributor portal, the editor dashboard. You decide if
+            it&rsquo;s the right fit.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-bar"></div>
+          <span class="step-num">STEP 02</span>
+          <span class="step-icon">&#9999;&#65039;</span>
+          <div class="step-title">We Help You Apply</div>
+          <p class="step-desc">
+            We prepare the full technology section of your grant application
+            &mdash; rationale, deliverables, cost breakdown.
+            <strong>You don&rsquo;t write a word of the tech section.</strong>
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-bar"></div>
+          <span class="step-num">STEP 03</span>
+          <span class="step-icon">&#127942;</span>
+          <div class="step-title">Grant Awarded</div>
+          <p class="step-desc">
+            ALNF notifies in April. Your newsroom receives the grant and uses it
+            to fund the platform deployment. We begin building immediately.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-bar"></div>
+          <span class="step-num">STEP 04</span>
+          <span class="step-icon">&#128640;</span>
+          <div class="step-title">Platform Goes Live</div>
+          <p class="step-desc">
+            Your white-labelled hyperlocal platform is deployed within 30 days.
+            Editors trained. Contributors onboarded.
+            <strong>City pages live under your brand.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="cta-section">
+      <div class="cta-glow"></div>
+      <div class="cta-inner">
+        <div class="section-label">March 13 Deadline</div>
+        <h2 class="cta-headline">
+          Let&rsquo;s get your<br />newsroom
+          <span class="grad-green">funded.</span>
+        </h2>
+        <p class="cta-sub">
+          Book a free 20-minute call. We&rsquo;ll show you the live platform,
+          walk through the grant structure, and help you put together a strong
+          application &mdash; at no cost, no obligation.
+        </p>
+        <div class="cta-btns">
+          <a
+            href="mailto:sameer@pressgenai.com?subject=ALNF Grant Partnership — Let's Talk&body=Hi Sameer, I'd like to learn more about using the ALNF grant to deploy PressGenAI for our newsroom. Please share your availability for a 20-minute call."
+            class="btn-white"
+            >Book a Free Call &rarr;</a
+          >
+          <a href="https://pressgenai.com" class="btn-ghost"
+            >See Full Platform</a
+          >
+        </div>
+        <p class="cta-deadline-note">
+          &#8987; Grant application deadline: March 13, 2026 &middot; Award
+          notification: April 2026 &middot; No cost to your newsroom
+        </p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <a href="#" class="footer-logo">
+          <img
+            src="./pressgenai_bgremoved.png"
+            alt="PressGenAI"
+            class="brand-logo"
+          />
+        </a>
+        <p class="footer-tagline">
+          Hyperlocal news infrastructure for community publishers. A product of
+          Social-Impact Innovations.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Grant Program</h4>
+        <a href="#what-we-deploy">What We Deploy</a>
+        <a href="#apply">How to Apply</a>
+        <a href="mailto:sameer@pressgenai.com">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="https://pressgenai.com">PressGenAI.com</a>
+        <a href="https://sm.tarunbharat.net" target="_blank"
+          >Live Demo (Tarun Bharat)</a
+        >
+        <a href="https://pressgenai.com">Full Feature List</a>
+      </div>
+      <div class="footer-bottom">
+        <span
+          >&copy; 2026 PressGenAI &mdash; Social-Impact Innovations Pvt Ltd. All
+          rights reserved.</span
+        >
+        <span>Built for the future of local journalism.</span>
+      </div>
+    </footer>
+
+    <script>
+      function copyGrantText() {
+        const text = `"This grant will fund the deployment of PressGenAI, a white-labelled hyperlocal news platform that gives our newsroom the infrastructure to expand local coverage across multiple communities simultaneously — without expanding our editorial team.
+
+PressGenAI provides community contributors with a structured story submission portal and AI-assisted writing tools, editors with a city- and category-wise review dashboard, and our brand with dedicated city-specific news pages — all operating under our existing domain and masthead. Readers see our brand. We control all editorial decisions.
+
+The grant will cover: platform deployment and white-labelling, editor and contributor onboarding, 12 months of hosting and operational support, and content infrastructure setup. This investment will allow us to publish more local stories, engage more community voices, and serve the communities we cover more deeply — with no ongoing technology cost after the grant period."`;
+        navigator.clipboard.writeText(text).then(() => {
+          const btn = document.querySelector(".copy-btn");
+          btn.textContent = "✓ Copied!";
+          setTimeout(() => {
+            btn.textContent = "📋 Copy to Clipboard";
+          }, 2500);
+        });
+      }
+    </script>
+  </body>
+</html>
