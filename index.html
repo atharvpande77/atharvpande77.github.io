@@ -950,6 +950,46 @@
         color: rgba(255, 255, 255, 0.2);
       }
 
+      .scroll-top-btn {
+        position: fixed;
+        right: 18px;
+        bottom: 8px;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 120;
+        display: grid;
+        place-items: center;
+        color: var(--navy);
+        font-size: 20px;
+        font-weight: 800;
+        box-shadow: 0 8px 20px rgba(15, 19, 64, 0.2);
+        background: conic-gradient(var(--blue) var(--scroll, 0%), rgba(255, 255, 255, 0.9) 0);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity 0.2s, transform 0.2s;
+      }
+      .scroll-top-btn::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border-radius: 50%;
+        background: white;
+      }
+      .scroll-top-btn span {
+        position: relative;
+        z-index: 1;
+        line-height: 1;
+      }
+      .scroll-top-btn.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
       @keyframes fadeUp {
         from {
           opacity: 0;
@@ -972,6 +1012,13 @@
       @media (max-width: 900px) {
         nav {
           padding: 0 20px;
+        }
+        .nav-logo .brand-logo {
+          width: 180px;
+        }
+        .nav-cta {
+          padding: 8px 14px;
+          font-size: 12px;
         }
         .nav-links {
           display: none;
@@ -1017,12 +1064,80 @@
         .showcase-bottom {
           grid-template-columns: 1fr;
         }
+        .trial-section {
+          padding: 72px 20px;
+        }
+        .trial-inner {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .trial-card {
+          padding: 32px 24px;
+          border-radius: 16px;
+        }
+        .trial-card-headline {
+          font-size: 22px;
+        }
         footer {
           grid-template-columns: 1fr 1fr;
         }
         .footer-bottom {
           flex-direction: column;
           gap: 8px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding: 104px 16px 64px;
+        }
+        .hero-sub {
+          font-size: 16px;
+        }
+        .hero-ctas {
+          width: 100%;
+        }
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          text-align: center;
+        }
+        .steps,
+        .features-grid,
+        .use-cases-grid {
+          grid-template-columns: 1fr;
+        }
+        .trial-section {
+          padding: 56px 16px;
+        }
+        .trial-inner {
+          gap: 20px;
+        }
+        .trial-card {
+          padding: 24px 18px;
+        }
+        .trial-card-headline {
+          font-size: 20px;
+          line-height: 1.3;
+        }
+        .trial-features li {
+          font-size: 13px;
+        }
+        .trial-left .section-headline br,
+        .trial-card-headline br {
+          display: none;
+        }
+        footer {
+          grid-template-columns: 1fr;
+        }
+        .footer-logo .brand-logo {
+          width: 200px;
+        }
+        .scroll-top-btn {
+          width: 40px;
+          height: 40px;
+          right: 24px;
+          bottom: 64px;
         }
       }
     </style>
@@ -1560,7 +1675,7 @@
             Get Started
           </div>
           <h2 class="section-headline" style="color: white">
-            Start with a free trial.<br />Pricing tailored to you.
+            Start with a free trial. <br>Pricing tailored to you.
           </h2>
           <p
             style="
@@ -1670,5 +1785,33 @@
         <span>Built for the future of local journalism.</span>
       </div>
     </footer>
+    <button
+      class="scroll-top-btn"
+      id="scrollTopBtn"
+      type="button"
+      aria-label="Scroll to top"
+      title="Scroll to top"
+    >
+      <span>&uarr;</span>
+    </button>
+    <script>
+      (function () {
+        const btn = document.getElementById("scrollTopBtn");
+        if (!btn) return;
+
+        const updateProgress = () => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = maxScroll > 0 ? Math.min((scrollTop / maxScroll) * 100, 100) : 0;
+          btn.style.setProperty("--scroll", progress + "%");
+          btn.classList.toggle("visible", scrollTop > 220);
+        };
+
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        window.addEventListener("resize", updateProgress);
+        btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        updateProgress();
+      })();
+    </script>
   </body>
 </html>
