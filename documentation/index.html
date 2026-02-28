@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/assets/meta/favicon.svg" />
+  <title>Documentation — PressGenAI</title>
+  <meta name="description" content="PressGenAI platform documentation — onboarding, setup, editorial workflow, and support.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #FFFFFF;
+      --bg2:      #F5F6FC;
+      --bg3:      #ECEEF8;
+      --navy:     #1A1F5E;
+      --navy2:    #0F1340;
+      --blue:     #4B5FFA;
+      --purple:   #7B5CFA;
+      --text:     #1A1F5E;
+      --text2:    #5A6380;
+      --text3:    #9AA3C0;
+      --border:   rgba(26,31,94,0.08);
+      --border2:  rgba(26,31,94,0.14);
+      --grad:     linear-gradient(135deg, #4B5FFA 0%, #7B5CFA 100%);
+      --shadow:   0 2px 24px rgba(75,95,250,0.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 64px;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-nav-logo {
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 20px;
+      color: var(--navy); letter-spacing: -0.5px;
+    }
+    .site-nav-logo span { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .site-nav-links { display: flex; gap: 32px; }
+    .site-nav-links a { font-size: 14px; font-weight: 500; color: var(--text2); transition: color .2s; }
+    .site-nav-links a:hover { color: var(--navy); }
+    .site-nav-cta {
+      background: var(--grad); color: #fff; font-size: 14px; font-weight: 600;
+      padding: 9px 20px; border-radius: 8px; transition: opacity .2s;
+    }
+    .site-nav-cta:hover { opacity: .88; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--navy2);
+      padding: 72px 40px 64px;
+      text-align: center;
+    }
+    .page-hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); margin-bottom: 18px;
+    }
+    .page-hero-badge span {
+      display: block; width: 24px; height: 2px;
+      background: linear-gradient(90deg, #4B5FFA, #7B5CFA);
+    }
+    .page-hero h1 {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: clamp(28px, 5vw, 48px);
+      color: #fff; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 14px;
+    }
+    .page-hero h1 em {
+      font-style: normal;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .page-hero p {
+      font-size: 17px; color: rgba(255,255,255,0.5);
+      max-width: 520px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ── DOCS OUTER WRAPPER ── */
+    .docs-outer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* ── DOCS SIDEBAR ── */
+    .docs-sidebar {
+      position: sticky;
+      top: 80px;
+      padding-top: 48px;
+    }
+    .docs-sidebar-section { margin-bottom: 28px; }
+    .docs-sidebar-section h5 {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--text3);
+      margin-bottom: 8px; padding-left: 10px;
+    }
+    .docs-sidebar-section a {
+      display: block; font-size: 13px; color: var(--text2);
+      padding: 6px 10px; border-radius: 6px; margin-bottom: 1px;
+      transition: background .15s, color .15s;
+    }
+    .docs-sidebar-section a:hover {
+      background: var(--bg2); color: var(--navy);
+    }
+    .docs-sidebar-section a.active {
+      background: var(--bg3); color: var(--navy); font-weight: 600;
+    }
+
+    /* ── DOCS CONTENT ── */
+    .docs-content { padding-top: 48px; }
+
+    .docs-section { margin-bottom: 56px; }
+
+    .docs-section h2 {
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 22px;
+      color: var(--navy); letter-spacing: -0.3px;
+      border-bottom: 1px solid var(--border); padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+    .docs-section h3 {
+      font-weight: 600; font-size: 16px; color: var(--navy);
+      margin: 24px 0 8px;
+    }
+    .docs-section p {
+      font-size: 15px; line-height: 1.8; color: var(--text2); margin-bottom: 14px;
+    }
+    .docs-section ul, .docs-section ol {
+      padding-left: 22px; margin-bottom: 14px;
+    }
+    .docs-section li {
+      font-size: 15px; line-height: 1.75; color: var(--text2); margin-bottom: 6px;
+    }
+    .docs-section a { color: var(--blue); }
+    .docs-section a:hover { text-decoration: underline; }
+
+    /* ── INLINE CODE ── */
+    code {
+      background: var(--bg2); padding: 2px 7px; border-radius: 4px;
+      font-family: 'Courier New', monospace; font-size: 13px;
+      color: var(--blue); border: 1px solid var(--border2);
+    }
+
+    /* ── CODE BLOCK ── */
+    .code-block {
+      background: var(--navy2); border-radius: 10px;
+      padding: 20px 24px; margin: 16px 0;
+    }
+    .code-block code {
+      background: none; border: none; color: #93C5FD;
+      font-size: 13px; display: block; white-space: pre; line-height: 1.6;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .note-box {
+      background: var(--bg2); border: 1px solid var(--border2);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px; margin: 20px 0;
+    }
+    .note-box p { margin: 0; font-size: 14px; line-height: 1.7; color: var(--text2); }
+    .note-box strong { color: var(--navy); }
+
+    /* ── STEP BLOCK ── */
+    .step-list { list-style: none; padding: 0; margin: 16px 0 24px; }
+    .step-item {
+      display: flex; gap: 16px; margin-bottom: 18px; align-items: flex-start;
+    }
+    .step-badge {
+      flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+      background: var(--grad); color: #fff;
+      font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 3px;
+    }
+    .step-text h4 {
+      font-weight: 600; font-size: 15px; color: var(--navy); margin-bottom: 4px;
+    }
+    .step-text p { margin: 0; font-size: 14px; color: var(--text2); line-height: 1.65; }
+
+    /* ── ROLE CARDS ── */
+    .role-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin: 20px 0 24px;
+    }
+    .role-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px 18px;
+    }
+    .role-card-icon { font-size: 22px; margin-bottom: 10px; }
+    .role-card-title { font-weight: 700; font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+    .role-card-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px;
+      padding: 56px 40px 0;
+      background: var(--navy2);
+    }
+    .footer-logo {
+      font-family: 'Sora', sans-serif; font-weight: 800;
+      font-size: 22px; color: #fff;
+    }
+    .footer-tagline {
+      font-size: 14px; color: rgba(255,255,255,0.4);
+      margin-top: 10px; line-height: 1.6; max-width: 220px;
+    }
+    .footer-col h4 {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 14px;
+    }
+    .footer-col a {
+      display: block; font-size: 14px; color: rgba(255,255,255,0.5);
+      margin-bottom: 9px; transition: color .2s;
+    }
+    .footer-col a:hover { color: rgba(255,255,255,0.85); }
+    .footer-bottom {
+      grid-column: 1 / -1;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 0; margin-top: 40px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom span { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .site-nav { padding: 0 20px; }
+      .site-nav-links { display: none; }
+      .page-hero { padding: 48px 20px 40px; }
+      .docs-outer {
+        grid-template-columns: 1fr;
+        padding: 0 20px 56px;
+        gap: 0;
+      }
+      .docs-sidebar { display: none; }
+      .docs-content { padding-top: 32px; }
+      .role-grid { grid-template-columns: 1fr; }
+      .site-footer { grid-template-columns: 1fr 1fr; padding: 40px 20px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<div class="site-nav">
+  <a href="/" class="site-nav-logo">Press<span>GenAI</span></a>
+  <div class="site-nav-links">
+    <a href="https://pressgenai.com/#how">How It Works</a>
+    <a href="https://pressgenai.com/#features">Features</a>
+  </div>
+  <a href="mailto:sameer@pressgenai.com" class="site-nav-cta">Book a Demo</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-badge"><span></span>Documentation</div>
+  <h1>Get your platform<br><em>live and running.</em></h1>
+  <p>Everything your team needs to deploy, configure, and operate PressGenAI &mdash; from first login to daily editorial workflow.</p>
+</div>
+
+<!-- DOCS LAYOUT -->
+<div class="docs-outer">
+
+  <!-- SIDEBAR -->
+  <div class="docs-sidebar">
+    <div class="docs-sidebar-section">
+      <h5>Getting Started</h5>
+      <a href="#overview" class="active">Platform Overview</a>
+      <a href="#onboarding">Onboarding Checklist</a>
+      <a href="#first-login">First Login</a>
+    </div>
+    <div class="docs-sidebar-section">
+      <h5>Publishers</h5>
+      <a href="#city-pages">City Pages</a>
+      <a href="#branding">Branding &amp; White-Label</a>
+      <a href="#categories">News Categories</a>
+      <a href="#editors">Managing Editors</a>
+    </div>
+    <div class="docs-sidebar-section">
+      <h5>Editorial</h5>
+      <a href="#dashboard">Editor Dashboard</a>
+      <a href="#review">Reviewing Stories</a>
+      <a href="#approving">Approving &amp; Publishing</a>
+    </div>
+    <div class="docs-sidebar-section">
+      <h5>Contributors</h5>
+      <a href="#contributor-portal">Contributor Portal</a>
+      <a href="#ai-drafting">AI-Assisted Drafting</a>
+      <a href="#profiles">Contributor Profiles</a>
+    </div>
+    <div class="docs-sidebar-section">
+      <h5>Settings</h5>
+      <a href="#languages">Languages</a>
+      <a href="#domain">Custom Domain</a>
+      <a href="#support">Support</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="docs-content">
+
+    <!-- OVERVIEW -->
+    <div class="docs-section" id="overview">
+      <h2>Platform Overview</h2>
+      <p>PressGenAI is a white-labelled hyperlocal news platform. When deployed for your newsroom, it runs entirely under your brand and domain &mdash; your readers never see PressGenAI. The platform has three user roles:</p>
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="role-card-icon">&#127981;</div>
+          <div class="role-card-title">Publishers</div>
+          <div class="role-card-desc">Configure city pages, manage branding, add editors, and set news categories.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-icon">&#128202;</div>
+          <div class="role-card-title">Editors</div>
+          <div class="role-card-desc">Review, refine, and approve stories before they publish on city pages.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-card-icon">&#9999;&#65039;</div>
+          <div class="role-card-title">Contributors</div>
+          <div class="role-card-desc">Community members who submit and draft stories through the contributor portal.</div>
+        </div>
+      </div>
+      <p>Stories flow in one direction: contributor submission &rarr; AI drafting assistance &rarr; editor review &rarr; publication on the city page. Nothing reaches readers without editor approval. The editorial chain of responsibility is preserved at every step.</p>
+      <div class="note-box">
+        <p><strong>Not a self-service SaaS.</strong> PressGenAI deployments are set up by our team &mdash; including domain configuration, branding, city page setup, and editor onboarding. You do not need a developer to operate the platform once it is live.</p>
+      </div>
+    </div>
+
+    <!-- ONBOARDING -->
+    <div class="docs-section" id="onboarding">
+      <h2>Onboarding Checklist</h2>
+      <p>After signing your service agreement, your deployment follows this sequence. Most newsrooms are live and publishing within three weeks.</p>
+      <ul class="step-list">
+        <li class="step-item">
+          <div class="step-badge">1</div>
+          <div class="step-text">
+            <h4>Kickoff call (Day 1)</h4>
+            <p>30-minute call with your PressGenAI contact. We confirm your city list, news categories, branding assets (logo, colours), and custom domain details.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-badge">2</div>
+          <div class="step-text">
+            <h4>Platform deployment (Days 2&ndash;5)</h4>
+            <p>We configure your white-label deployment: domain setup, brand colours, logo integration, city pages, and editorial routing. You receive admin login credentials.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-badge">3</div>
+          <div class="step-text">
+            <h4>Editor training (Days 7&ndash;10)</h4>
+            <p>Live training session for your editorial team covering the dashboard, story review workflow, and the approval process. Recorded for future reference.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-badge">4</div>
+          <div class="step-text">
+            <h4>Contributor onboarding (Week 2)</h4>
+            <p>We provide a contributor onboarding guide customised for your newsroom. You share it with your community through your existing channels.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-badge">5</div>
+          <div class="step-text">
+            <h4>First stories published (Week 3)</h4>
+            <p>Platform is live. Contributors are submitting. Editors are reviewing. You are publishing community stories under your brand.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- FIRST LOGIN -->
+    <div class="docs-section" id="first-login">
+      <h2>First Login</h2>
+      <p>After deployment, you will receive an email with your admin credentials for your PressGenAI publisher dashboard. The dashboard is accessible at <code>community.yournewsroom.com/admin</code> (or your configured subdomain).</p>
+      <p>On first login you should:</p>
+      <ul>
+        <li>Change your admin password from the default</li>
+        <li>Verify your city pages are configured correctly</li>
+        <li>Add your editors as users with their email addresses</li>
+        <li>Review your editorial routing rules (which editor handles which city)</li>
+        <li>Submit a test story as a contributor to walk through the workflow end-to-end</li>
+      </ul>
+    </div>
+
+    <!-- CITY PAGES -->
+    <div class="docs-section" id="city-pages">
+      <h2>City Pages</h2>
+      <p>Each city page is an independently managed news feed under your main domain. For example, if your domain is <code>citynews.com</code>, your Maricopa city page lives at <code>citynews.com/maricopa</code>.</p>
+      <p>City pages can be added, renamed, or archived at any time from your Publisher dashboard. Each city page has:</p>
+      <ul>
+        <li>A news feed of contributor-submitted, editor-approved stories</li>
+        <li>Assigned editor(s) responsible for story review from that city</li>
+        <li>News category tags specific to that community</li>
+        <li>A contributor pool of local residents registered to submit stories for that city</li>
+      </ul>
+      <p>There is no limit on the number of city pages. Publishers covering a single city typically start with one city page and several neighbourhood sub-categories.</p>
+    </div>
+
+    <!-- BRANDING -->
+    <div class="docs-section" id="branding">
+      <h2>Branding &amp; White-Label</h2>
+      <p>Your platform is configured with the following brand elements during deployment. Prepare these before your kickoff call:</p>
+      <ul>
+        <li>Logo file &mdash; SVG or PNG, minimum 200px wide, transparent background preferred</li>
+        <li>Primary and secondary brand colours &mdash; hex codes (e.g. <code>#1A1F5E</code>)</li>
+        <li>Custom domain or subdomain (e.g. <code>community.yournewsroom.com</code>)</li>
+        <li>Publication name / masthead as it should appear to readers</li>
+        <li>Editorial voice guidelines &mdash; used to calibrate AI drafting to your style</li>
+      </ul>
+      <div class="note-box">
+        <p><strong>Brand updates after deployment</strong> &mdash; logo changes, colour palette updates &mdash; can be requested by email and are applied within 2 business days at no additional charge during the active service period.</p>
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="docs-section" id="categories">
+      <h2>News Categories</h2>
+      <p>Categories allow contributors and editors to tag stories by topic. They also drive editorial routing &mdash; a "City Government" story can automatically route to your politics editor, while a "Business" story routes to your business desk.</p>
+      <p>During deployment we configure your initial category set based on your editorial brief. Typical categories include: Local Politics, Business &amp; Economy, Schools &amp; Education, Community Events, Public Safety, Environment, Sports, and Arts &amp; Culture.</p>
+      <p>Categories can be added or removed from your Publisher dashboard. If a category is removed, existing stories in that category are not deleted &mdash; they are uncategorised until reassigned.</p>
+    </div>
+
+    <!-- MANAGING EDITORS -->
+    <div class="docs-section" id="editors">
+      <h2>Managing Editors</h2>
+      <p>Add editors from your Publisher dashboard under <strong>Users &rarr; Editors &rarr; Invite Editor</strong>. Each editor needs:</p>
+      <ul>
+        <li>A name and email address</li>
+        <li>City assignment(s) &mdash; which city page(s) they review</li>
+        <li>Category assignment(s) &mdash; which story categories they handle (optional; editors can be general-assignment)</li>
+      </ul>
+      <p>Editors receive an email invitation with login instructions. They do not have access to Publisher-level settings &mdash; only the editorial review dashboard.</p>
+    </div>
+
+    <!-- EDITOR DASHBOARD -->
+    <div class="docs-section" id="dashboard">
+      <h2>Editor Dashboard</h2>
+      <p>Editors log in to a centralised dashboard showing all stories routed to them by city and category. Stories appear in four columns:</p>
+      <ul>
+        <li><strong>Pending review</strong> &mdash; newly submitted stories awaiting a first read</li>
+        <li><strong>In revision</strong> &mdash; stories returned to contributors with editorial notes</li>
+        <li><strong>Approved</strong> &mdash; stories cleared for publication (scheduled or immediate)</li>
+        <li><strong>Published</strong> &mdash; live stories, with view counts and contributor attribution</li>
+      </ul>
+      <p>All editorial decisions (approve, revise, reject) are logged with a timestamp and editor name. The log is visible to Publisher admins.</p>
+    </div>
+
+    <!-- REVIEWING STORIES -->
+    <div class="docs-section" id="review">
+      <h2>Reviewing Stories</h2>
+      <p>When an editor opens a pending story they see the full article draft, the contributor's profile, the city and category tags, and the AI-generated confidence score for factual consistency (where applicable).</p>
+      <p>From the review screen, editors can:</p>
+      <ul>
+        <li>Edit the story inline before approving</li>
+        <li>Add editorial notes visible only to the contributor</li>
+        <li>Return the story to the contributor for revision</li>
+        <li>Approve the story for immediate publication</li>
+        <li>Schedule the story for a future publication time</li>
+        <li>Reject the story with a reason (contributor is notified)</li>
+      </ul>
+    </div>
+
+    <!-- APPROVING -->
+    <div class="docs-section" id="approving">
+      <h2>Approving &amp; Publishing</h2>
+      <p>Approved stories publish to the relevant city page immediately or at the scheduled time. Published stories appear with:</p>
+      <ul>
+        <li>The contributor's name and public profile link (byline)</li>
+        <li>City and category tags</li>
+        <li>Publication timestamp</li>
+        <li>Your newsroom's masthead &mdash; not PressGenAI branding</li>
+      </ul>
+      <p>Editors can unpublish a story at any time from the dashboard. Unpublished stories are moved back to the Approved column and are not visible to readers.</p>
+    </div>
+
+    <!-- CONTRIBUTOR PORTAL -->
+    <div class="docs-section" id="contributor-portal">
+      <h2>Contributor Portal</h2>
+      <p>Community contributors access a separate portal at your platform URL. They register with a name, email, and city affiliation. Registration is open by default; you can require editor approval for new contributors from your Publisher settings.</p>
+      <p>Once registered, contributors can:</p>
+      <ul>
+        <li>Browse open story opportunities posted by editors</li>
+        <li>Submit original story ideas with or without AI drafting assistance</li>
+        <li>Track the status of their submitted stories (pending, in revision, published)</li>
+        <li>View and manage their public contributor profile and byline history</li>
+      </ul>
+    </div>
+
+    <!-- AI DRAFTING -->
+    <div class="docs-section" id="ai-drafting">
+      <h2>AI-Assisted Drafting</h2>
+      <p>When a contributor begins a new story, they can choose AI drafting assistance. The process:</p>
+      <ul class="step-list">
+        <li class="step-item">
+          <div class="step-badge">1</div>
+          <div class="step-text">
+            <h4>Select city and category</h4>
+            <p>Contributor picks the city page and news category for their story.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-badge">2</div>
+          <div class="step-text">
+            <h4>Answer guided prompts</h4>
+            <p>5&ndash;8 questions covering who, what, where, when, and why. Contributor fills these in from their own knowledge or reporting.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-badge">3</div>
+          <div class="step-text">
+            <h4>Review the generated draft</h4>
+            <p>PressGenAI generates a complete article in your newsroom's editorial voice. Contributor reads and edits before submitting.</p>
+          </div>
+        </li>
+        <li class="step-item">
+          <div class="step-badge">4</div>
+          <div class="step-text">
+            <h4>Submit for review</h4>
+            <p>Story enters the editor queue. The editorial review process is identical whether AI drafting was used or not.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="note-box">
+        <p><strong>Editorial voice calibration:</strong> During onboarding, we configure the AI with your publication's style guidelines &mdash; sentence length, formality, story structure. The output reflects your voice, not a generic AI style. Voice calibration can be updated on request.</p>
+      </div>
+    </div>
+
+    <!-- PROFILES -->
+    <div class="docs-section" id="profiles">
+      <h2>Contributor Profiles</h2>
+      <p>Every contributor has a public profile page showing their name, city, a short bio (optional), and a portfolio of their published stories. Profile pages are linked from every published story byline.</p>
+      <p>Profiles build community journalist identity and create an incentive for contributors to maintain quality &mdash; their published bylines are publicly visible.</p>
+      <p>Publishers can disable public profiles from their dashboard settings if preferred, replacing named bylines with "Community Contributor."</p>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="docs-section" id="languages">
+      <h2>Languages</h2>
+      <p>PressGenAI supports multilingual deployments. The platform interface, contributor portal, and AI drafting can be configured for any Unicode-supported language.</p>
+      <p><strong>Currently in production:</strong> English, Marathi, Hindi.</p>
+      <p><strong>In active configuration:</strong> Spanish.</p>
+      <p>To enable a language for your deployment, email <a href="mailto:sameer@pressgenai.com">sameer@pressgenai.com</a> with the language and any dialect or regional preferences. Spanish-language deployments can be activated within your standard onboarding timeline.</p>
+    </div>
+
+    <!-- DOMAIN -->
+    <div class="docs-section" id="domain">
+      <h2>Custom Domain Setup</h2>
+      <p>Your deployment lives on a subdomain or path of your existing domain. You will need access to your domain's DNS settings to add a CNAME record.</p>
+      <h3>Steps</h3>
+      <ol>
+        <li>Decide on your subdomain (e.g. <code>community.yournewsroom.com</code> or <code>local.yournewsroom.com</code>)</li>
+        <li>We provide a target DNS hostname during onboarding</li>
+        <li>Add a CNAME record in your domain registrar pointing your chosen subdomain to our hostname</li>
+        <li>SSL/TLS is provisioned automatically &mdash; no certificate management required on your side</li>
+        <li>DNS propagation typically takes 24&ndash;48 hours</li>
+      </ol>
+      <div class="code-block">
+        <code>; Example DNS record
+community.yournewsroom.com.  CNAME  platform.pressgenai.com.</code>
+      </div>
+      <p>If you prefer a path-based setup (e.g. <code>yournewsroom.com/community</code>), this is possible with a proxy/reverse-proxy configuration on your existing server. Contact us to discuss.</p>
+    </div>
+
+    <!-- SUPPORT -->
+    <div class="docs-section" id="support">
+      <h2>Support</h2>
+      <p>All active deployments include email support for the duration of the service agreement. First-90-days onboarding support is included in every deployment at no additional charge.</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:sameer@pressgenai.com">sameer@pressgenai.com</a></li>
+        <li><strong>Standard response:</strong> within 1 business day</li>
+        <li><strong>Urgent issues:</strong> mark subject line with <strong>[URGENT]</strong> for same-day response</li>
+        <li><strong>Onboarding support:</strong> dedicated first-90-days support included</li>
+      </ul>
+      <div class="note-box">
+        <p><strong>What to include in a support request:</strong> Your deployment domain, a description of the issue, any error messages you see, and the email address of the user experiencing the problem. Screenshots help.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="site-footer">
+  <div>
+    <div class="footer-logo">PressGenAI</div>
+    <p class="footer-tagline">Hyperlocal news infrastructure for the publishers of tomorrow.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Product</h4>
+    <a href="https://pressgenai.com/#how">How It Works</a>
+    <a href="https://pressgenai.com/#features">Features</a>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact</a>
+    <a href="/privacy-policy">Privacy Policy</a>
+  </div>
+  <div class="footer-col">
+    <h4>Resources</h4>
+    <a href="/documentation">Documentation</a>
+    <a href="/case-studies">Case Studies</a>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 PressGenAI.com &mdash; All rights reserved.</span>
+    <span>A product of Social-Impact Innovations &middot; Built for the future of local journalism.</span>
+  </div>
+</div>
+
+<script>
+  // Highlight active sidebar link on scroll
+  const sections = document.querySelectorAll('.docs-section');
+  const navLinks = document.querySelectorAll('.docs-sidebar-section a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+
+</body>
+</html>
