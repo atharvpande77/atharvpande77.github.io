@@ -809,7 +809,7 @@
         color: var(--text2);
       }
       .language-item::before {
-        content: "âœ“";
+        content: "\2713";
         font-size: 11px;
         font-weight: 700;
         color: var(--green);
@@ -1817,9 +1817,9 @@ PressGenAI provides community contributors with a structured story submission po
 The grant will cover: platform deployment and white-labelling, editor and contributor onboarding, 12 months of hosting and operational support, and content infrastructure setup. This investment will allow us to publish more local stories, engage more community voices, and serve the communities we cover more deeply â€” with no ongoing technology cost after the grant period."`;
         navigator.clipboard.writeText(text).then(() => {
           const btn = document.querySelector(".copy-btn");
-          btn.textContent = "âœ“ Copied!";
+          btn.textContent = "\u2713 Copied!";
           setTimeout(() => {
-            btn.textContent = "ðŸ“‹ Copy to Clipboard";
+            btn.textContent = "Copy to Clipboard";
           }, 2500);
         });
       }
@@ -1844,4 +1844,5 @@ The grant will cover: platform deployment and white-labelling, editor and contri
     </script>
   </body>
 </html>
+
 
