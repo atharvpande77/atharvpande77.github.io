@@ -401,6 +401,19 @@
       .form-status.error {
         color: #c62828;
       }
+      .form-success-note {
+        display: none;
+        margin: 0 auto 18px;
+        max-width: 720px;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        color: #0f9d58;
+        border-radius: 10px;
+        padding: 10px 14px;
+        font-size: 13px;
+        font-weight: 500;
+        text-align: center;
+      }
 
       /* DOCS LAYOUT */
       .docs-layout {
@@ -769,6 +782,9 @@
         </div>
 
         <div class="contact-form">
+          <div id="formSuccessNote" class="form-success-note">
+            Thanks for submitting. We will contact you soon.
+          </div>
           <h3
             style="
               font-family: &quot;Sora&quot;, sans-serif;
@@ -829,10 +845,6 @@
             <button type="submit" class="btn-submit">
               Send message &rarr;
             </button>
-            <p class="form-status" aria-live="polite">
-              On first use, please verify delivery from the confirmation email sent to
-              contact@social-impact.in.
-            </p>
             <p
               style="
                 font-size: 12px;
@@ -885,5 +897,18 @@
         >
       </div>
     </footer>
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("sent") !== "1") return;
+
+        const note = document.getElementById("formSuccessNote");
+        if (note) note.style.display = "block";
+
+        params.delete("sent");
+        const next = window.location.pathname + (params.toString() ? "?" + params.toString() : "");
+        window.history.replaceState({}, "", next);
+      })();
+    </script>
   </body>
 </html>
