@@ -134,6 +134,22 @@
         width: 260px;
       }
 
+      .nav-logo {
+        font-family: "Sora", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        letter-spacing: -1px;
+        color: var(--navy);
+        text-decoration: none;
+      }
+
+      .nav-logo span {
+        background: var(--grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
       .nav-logo-icon {
         width: 32px;
         height: 32px;
@@ -1058,11 +1074,16 @@
       /* FOOTER */
       footer {
         background: #080b22;
-        padding: 48px 60px 32px;
+        padding: 64px 48px 40px;
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
-        gap: 48px;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
         border-top: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
       .footer-logo {
         font-family: "Sora", sans-serif;
@@ -1070,16 +1091,8 @@
         font-weight: 800;
         color: white;
         text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
         margin-bottom: 14px;
       }
-
-      .footer-logo .brand-logo {
-        width: 300px;
-      }
-
       .footer-logo span {
         background: var(--grad);
         -webkit-background-clip: text;
@@ -1093,19 +1106,19 @@
         max-width: 220px;
       }
       .footer-col h4 {
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 700;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.22);
-        margin-bottom: 14px;
+        color: rgba(255, 255, 255, 0.25);
+        margin-bottom: 16px;
       }
       .footer-col a {
         display: block;
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.32);
+        color: rgba(255, 255, 255, 0.35);
         text-decoration: none;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         transition: color 0.2s;
       }
       .footer-col a:hover {
@@ -1113,12 +1126,12 @@
       }
       .footer-bottom {
         grid-column: 1/-1;
-        padding-top: 24px;
+        padding-top: 32px;
         border-top: 1px solid rgba(255, 255, 255, 0.04);
         display: flex;
         justify-content: space-between;
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.2);
       }
 
       .scroll-top-btn {
@@ -1218,14 +1231,11 @@
           padding: 72px 20px;
         }
         footer {
-          grid-template-columns: 1fr;
-          gap: 32px;
-          padding: 40px 20px 24px;
+          grid-template-columns: 1fr 1fr;
         }
-        
         .footer-bottom {
           flex-direction: column;
-          gap: 6px;
+          gap: 8px;
         }
       }
 
@@ -1273,13 +1283,7 @@
 
     <!-- NAV -->
     <nav>
-      <a href="#" class="nav-logo">
-        <img
-          src="./pressgenai_bgremoved.png"
-          alt="PressGenAI"
-          class="brand-logo"
-        />
-      </a>
+      <a href="./index.html" class="nav-logo">Press<span>GenAI</span></a>
       <div class="nav-pill">&#127942; ALNF Grant Partnership</div>
       <a href="#apply" class="nav-cta">Book Free Call &rarr;</a>
     </nav>
@@ -1746,7 +1750,7 @@
         </p>
         <div class="cta-btns">
           <a
-            href="mailto:sameer@pressgenai.com?subject=ALNF Grant Partnership â€” Let's Talk&body=Hi Sameer, I'd like to learn more about using the ALNF grant to deploy PressGenAI for our newsroom. Please share your availability for a 20-minute call."
+            href="mailto:sameer@social-impact.in?subject=ALNF Grant Partnership â€” Let's Talk&body=Hi Sameer, I'd like to learn more about using the ALNF grant to deploy PressGenAI for our newsroom. Please share your availability for a 20-minute call."
             class="btn-white"
             >Book a Free Call &rarr;</a
           >
@@ -1763,38 +1767,31 @@
 
     <!-- FOOTER -->
     <footer>
-      <div>
-        <a href="#" class="footer-logo">
-          <img
-            src="./pressgenai_bgremoved.png"
-            alt="PressGenAI"
-            class="brand-logo"
-          />
-        </a>
+      <div class="footer-brand">
+        <a href="./index.html" class="footer-logo">Press<span>GenAI</span></a>
         <p class="footer-tagline">
-          Hyperlocal news infrastructure for community publishers. A product of
-          Social-Impact Innovations.
+          Hyperlocal news infrastructure for the newspapers of tomorrow.
         </p>
       </div>
       <div class="footer-col">
-        <h4>Grant Program</h4>
-        <a href="#what-we-deploy">What We Deploy</a>
-        <a href="#apply">How to Apply</a>
-        <a href="mailto:sameer@pressgenai.com">Contact Us</a>
+        <h4>Product</h4>
+        <a href="#how">How It Works</a>
+        <a href="#features">Features</a>
       </div>
       <div class="footer-col">
-        <h4>Platform</h4>
-        <a href="https://pressgenai.com">PressGenAI.com</a>
-        <a href="https://sm.tarunbharat.net" target="_blank"
-          >Live Demo (Tarun Bharat)</a
-        >
-        <a href="https://pressgenai.com">Full Feature List</a>
+        <h4>Company</h4>
+        <a href="./about">About Us</a>
+        <a href="./contact">Contact</a>
+        <a href="./privacy-policy">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="./documentation">Documentation</a>
+        <a href="./case-studies">Case Studies</a>
+        <a href="#">Blog</a>
       </div>
       <div class="footer-bottom">
-        <span
-          >&copy; 2026 PressGenAI &mdash; Social-Impact Innovations Pvt Ltd. All
-          rights reserved.</span
-        >
+        <span>&copy; 2026 PressGenAI.com &mdash; All rights reserved.</span>
         <span>Built for the future of local journalism.</span>
       </div>
     </footer>
