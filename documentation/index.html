@@ -249,6 +249,55 @@
       .role-grid { grid-template-columns: 1fr; }
       .site-footer { grid-template-columns: 1fr 1fr; padding: 40px 20px 0; }
     }
+  
+      .scroll-top-btn {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 120;
+        display: grid;
+        place-items: center;
+        color: var(--navy);
+        font-size: 16px;
+        font-weight: 800;
+        box-shadow: 0 8px 20px rgba(15, 19, 64, 0.2);
+        background: conic-gradient(var(--blue) var(--scroll, 0%), rgba(255, 255, 255, 0.9) 0);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity 0.2s, transform 0.2s;
+      }
+      .scroll-top-btn::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border-radius: 50%;
+        background: white;
+      }
+      .scroll-top-btn span {
+        position: relative;
+        z-index: 1;
+        line-height: 1;
+      }
+      .scroll-top-btn.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 640px) {
+        .scroll-top-btn {
+          width: 40px;
+          height: 40px;
+          right: 12px;
+          bottom: 12px;
+        }
+      }
   </style>
 </head>
 <body>
@@ -261,7 +310,7 @@
     <a href="https://pressgenai.com/#features">Features</a>
   </div>
   <a href="mailto:contact@social-impact.in" class="site-nav-cta">Book a Demo</a>
-</div>
+</footer>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -593,7 +642,7 @@ community.yournewsroom.com.  CNAME  platform.pressgenai.com.</code>
 </div>
 
 <!-- FOOTER -->
-<div class="site-footer">
+<footer class="site-footer">
   <div>
     <div class="footer-logo">PressGenAI</div>
     <p class="footer-tagline">Hyperlocal news infrastructure for the publishers of tomorrow.</p>
@@ -635,6 +684,37 @@ community.yournewsroom.com.  CNAME  platform.pressgenai.com.</code>
   });
 </script>
 
-</body>
+    <button
+      class="scroll-top-btn"
+      id="scrollTopBtn"
+      type="button"
+      aria-label="Scroll to top"
+      title="Scroll to top"
+    >
+      <span>&uarr;</span>
+    </button>
+    <script>
+      (function () {
+        const btn = document.getElementById("scrollTopBtn");
+        if (!btn) return;
+
+        const updateProgress = () => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = maxScroll > 0 ? Math.min((scrollTop / maxScroll) * 100, 100) : 0;
+          btn.style.setProperty("--scroll", progress + "%");
+          btn.classList.toggle("visible", scrollTop > 220);
+        };
+
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        window.addEventListener("resize", updateProgress);
+        btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        updateProgress();
+      })();
+    </script>
+  </body>
 </html>
+
+
+
 
