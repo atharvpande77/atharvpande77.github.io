@@ -1976,50 +1976,31 @@
               &mdash; at no cost.
             </p>
           </header>
-          <form onsubmit="submitForm(event)">
-            <div class="form-row">
-              <div class="form-field">
-                <label for="f-newsroom"
-                  >Newsroom Name <span class="req">*</span></label
-                >
-                <input
-                  id="f-newsroom"
-                  type="text"
-                  placeholder="e.g. Tucson Independent"
-                  required
-                />
-              </div>
-              <div class="form-field">
-                <label for="f-website"
-                  >Newsroom Website <span class="req">*</span></label
-                >
-                <input
-                  id="f-website"
-                  type="url"
-                  placeholder="https://yournewsroom.com"
-                  required
-                />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="f-name">Your Name <span class="req">*</span></label>
-                <input
-                  id="f-name"
-                  type="text"
-                  placeholder="First Last"
-                  required
-                />
-              </div>
-              <div class="form-field">
-                <label for="f-role">Your Role <span class="req">*</span></label>
-                <input
-                  id="f-role"
-                  type="text"
-                  placeholder="e.g. Editor, Publisher"
-                  required
-                />
-              </div>
+          <form
+            action="https://formsubmit.co/contact@social-impact.in"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="ALNF Grant - Apply with Our Help"
+            />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="hidden"
+              name="_next"
+              value="https://pressgenai.com/arizona-grant/index.html?sent=1"
+            />
+            <div class="form-field">
+              <label for="f-name">Your Name <span class="req">*</span></label>
+              <input
+                id="f-name"
+                name="name"
+                type="text"
+                placeholder="First Last"
+                required
+              />
             </div>
             <div class="form-field">
               <label for="f-email"
@@ -2027,65 +2008,28 @@
               >
               <input
                 id="f-email"
+                name="email"
                 type="email"
                 placeholder="you@yournewsroom.com"
                 required
               />
             </div>
             <div class="form-field">
-              <label for="f-communities">What communities do you cover?</label>
+              <label for="f-newsroom"
+                >Newsroom or Organisation <span class="req">*</span></label
+              >
               <input
-                id="f-communities"
+                id="f-newsroom"
+                name="org"
                 type="text"
-                placeholder="e.g. Phoenix metro, East Valley suburbs"
+                placeholder="e.g. Tucson Independent"
+                required
               />
             </div>
-            <div class="form-field">
-              <label for="f-notes"
-                >Anything specific you&rsquo;d like help with?</label
-              >
-              <textarea
-                id="f-notes"
-                placeholder="Optional — share any context about your newsroom or goals"
-              ></textarea>
-            </div>
-            <p class="form-privacy-note">
-              By submitting this form, you agree to our
-              <a
-                href="#"
-                onclick="
-                  openLegal('privacy');
-                  return false;
-                "
-                >Privacy Policy</a
-              >
-              and
-              <a
-                href="#"
-                onclick="
-                  openLegal('terms');
-                  return false;
-                "
-                >Terms of Service</a
-              >. We will use your information solely to respond to your enquiry
-              and assist with your grant application.
-            </p>
             <button type="submit" class="form-submit">
-              Submit — We&rsquo;ll Be in Touch &rarr;
+              Submit &rarr;
             </button>
-            <p class="form-note">
-              No commitment &middot; Free &middot; We respond within 1 business
-              day
-            </p>
           </form>
-        </div>
-        <div id="modalSuccess" class="form-success" style="display: none">
-          <div class="form-success-icon">&#10003;&#65039;</div>
-          <div class="form-success-title">We&rsquo;ve got your details!</div>
-          <p class="form-success-body">
-            We&rsquo;ll be in touch within one business day to start working on
-            your application together. Keep an eye on your inbox.
-          </p>
         </div>
       </div>
     </div>
@@ -2134,14 +2078,14 @@
         ><span class="logo-genai">GenAI</span></a
       >
       <div class="nav-pill">&#127942; ALNF Grant Partnership</div>
-      <a href="#cta-section" class="nav-cta">Apply Now &rarr;</a>
+      <a class="nav-cta" onclick="openModal()">Apply Now &rarr;</a>
     </nav>
 
     <!-- ═══ HERO ═══ -->
     <section class="hero">
       <div>
         <a
-          href="https://arizonalocalnewsfoundation.org"
+          href="https://azmedia.org/2026/02/03/apply-now-grant-funding-now-available-for-local-newsrooms/"
           target="_blank"
           rel="noopener"
           class="hero-badge"
@@ -2196,7 +2140,7 @@
           </div>
         </div>
         <div class="hero-ctas">
-          <button class="btn-primary-green" onclick="window.location.href='./contact'">
+          <button class="btn-primary-green" onclick="openModal()">
             Apply with Our Help &rarr;
           </button>
           <a href="https://calendly.com/contact-social-impact/30min" target="_blank" class="btn-secondary"
@@ -2265,7 +2209,7 @@
             >
           </div>
         </div>
-        <button class="grant-card-cta" onclick="window.location.href='./contact'">
+        <button class="grant-card-cta" onclick="openModal()">
           Apply with Our Help &rarr;
         </button>
         <p class="grant-card-note">
@@ -2528,71 +2472,18 @@
           </div>
         </div>
 
-        <!-- Phone mockup -->
+        <!-- App image -->
         <div class="phone-wrap">
-          <div class="phone">
-            <div class="phone-notch"></div>
-            <div class="phone-screen">
-              <div class="phone-status">
-                <span>9:41</span><span>&#9679;&#9679;&#9679;</span>
-              </div>
-              <div class="phone-header">
-                <div class="phone-app-icon">&#128241;</div>
-                <div class="phone-profile-info">
-                  <div class="phone-app-name">YourNewsroom Reporter</div>
-                  <div class="phone-app-sub">Citizen Journalist App</div>
-                </div>
-              </div>
-              <div class="phone-ai-chip">
-                <span class="phone-ai-icon">&#129302;</span>
-                <div class="phone-ai-text">
-                  <strong>AI Draft Ready</strong><br />Headline &amp; story
-                  generated from your answers
-                </div>
-              </div>
-              <div class="phone-card">
-                <div class="phone-card-label">Your Story</div>
-                <div class="phone-card-title">
-                  Community Garden Opens in South Phoenix Neighbourhood
-                </div>
-                <div class="phone-card-meta">
-                  <span class="phone-tag">Community</span>
-                  <span class="phone-tag">South Phoenix</span>
-                </div>
-              </div>
-              <div class="phone-card">
-                <div class="phone-card-label">Status</div>
-                <div
-                  class="phone-card-title"
-                  style="color: rgba(16, 185, 129, 0.85); font-size: 12px"
-                >
-                  &#9989; Approved &amp; Published
-                </div>
-              </div>
-              <div
-                style="
-                  display: flex;
-                  align-items: center;
-                  gap: 8px;
-                  padding: 8px 0;
-                  border-top: 1px solid rgba(255, 255, 255, 0.06);
-                  margin-top: 2px;
-                "
-              >
-                <div class="phone-avatar">&#128100;</div>
-                <div>
-                  <div class="phone-profile-name">Maria Gonzalez</div>
-                  <div
-                    class="phone-profile-articles"
-                    style="color: rgba(16, 185, 129, 0.7)"
-                  >
-                    &#128196; 6 articles published
-                  </div>
-                </div>
-              </div>
-              <div class="phone-btn">+ Submit New Story</div>
-            </div>
-          </div>
+          <img
+            src="../English.png"
+            alt="Citizen Journalist App Preview"
+            style="
+              width: 100%;
+              max-width: 280px;
+              border-radius: 20px;
+              box-shadow: 0 24px 60px rgba(15, 19, 64, 0.2);
+            "
+          />
         </div>
       </div>
 
@@ -2906,7 +2797,7 @@
           newsroom.
         </p>
         <div class="cta-btns">
-          <button class="btn-white" onclick="window.location.href='./contact'">
+          <button class="btn-white" onclick="openModal()">
             Apply with Our Help &rarr;
           </button>
           <a href="https://calendly.com/contact-social-impact/30min" target="_blank" class="btn-ghost"
@@ -3082,11 +2973,6 @@
         if (e.key === "Escape") closeModal();
       });
 
-      function submitForm(e) {
-        e.preventDefault();
-        document.getElementById("modalFormWrap").style.display = "none";
-        document.getElementById("modalSuccess").style.display = "block";
-      }
     </script>
   </body>
 </html>
