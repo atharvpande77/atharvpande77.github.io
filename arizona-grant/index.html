@@ -4,17 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      ALNF Grant Partnership â€” PressGenAI | Grant-Funded Hyperlocal Platform for
-      Arizona Newsrooms
+      ALNF Grant Partnership | PressGenAI | Grant-Funded Hyperlocal Platform
+      for Arizona Newsrooms
     </title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/assets/meta/favicon.ico" />
 
     <!-- PNG Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/meta/favicon-32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/meta/favicon-32.png"
+    />
 
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/meta/favicon-180.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/meta/favicon-180.png"
+    />
 
     <!-- Android / PWA Icons -->
     <link
@@ -82,7 +91,7 @@
         line-height: 1.6;
       }
 
-      /* DEADLINE TICKER */
+      /* ── DEADLINE BAR ── */
       .deadline-bar {
         background: var(--navy2);
         text-align: center;
@@ -91,6 +100,11 @@
         font-weight: 600;
         color: rgba(255, 255, 255, 0.6);
         letter-spacing: 0.3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
       }
       .deadline-bar .highlight {
         color: #fcd34d;
@@ -102,10 +116,58 @@
         height: 7px;
         background: #10b981;
         border-radius: 50%;
-        margin: 0 10px;
+        margin: 0 6px;
         animation: blink 1.5s ease infinite;
         vertical-align: middle;
       }
+      .deadline-bar a {
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 11px;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: color 0.2s;
+      }
+      .deadline-bar a:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      /* ── COUNTDOWN ── */
+      .countdown-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .countdown-unit {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.07);
+        border-radius: 6px;
+        padding: 3px 8px;
+        min-width: 38px;
+      }
+      .countdown-num {
+        font-family: "Sora", sans-serif;
+        font-size: 15px;
+        font-weight: 800;
+        color: #fcd34d;
+        line-height: 1;
+      }
+      .countdown-lbl {
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.3);
+        margin-top: 2px;
+      }
+      .countdown-sep {
+        font-size: 15px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.2);
+        margin-bottom: 4px;
+      }
+
       @keyframes blink {
         0%,
         100% {
@@ -116,7 +178,7 @@
         }
       }
 
-      /* NAV */
+      /* ── NAV ── */
       nav {
         position: sticky;
         top: 0;
@@ -130,38 +192,19 @@
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
       }
-      .nav-logo .brand-logo {
-        width: 260px;
-      }
-
       .nav-logo {
         font-family: "Sora", sans-serif;
+        font-size: 18px;
         font-weight: 800;
-        font-size: 20px;
-        letter-spacing: -1px;
-        color: var(--navy);
         text-decoration: none;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0;
       }
-
-      .nav-logo span {
-        background: var(--grad);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      .nav-logo .logo-press {
+        color: #1a1f5e;
       }
-
-      .nav-logo-icon {
-        width: 32px;
-        height: 32px;
-        background: var(--grad);
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-      }
-
-      .nav-logo span {
+      .nav-logo .logo-genai {
         background: var(--grad);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -192,7 +235,7 @@
         opacity: 0.85;
       }
 
-      /* HERO */
+      /* ── HERO ── */
       .hero {
         display: grid;
         grid-template-columns: 1.15fr 1fr;
@@ -218,7 +261,6 @@
         );
         pointer-events: none;
       }
-
       .hero-badge {
         display: inline-flex;
         align-items: center;
@@ -234,6 +276,11 @@
         border-radius: 100px;
         margin-bottom: 24px;
         animation: fadeUp 0.6s ease forwards;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .hero-badge:hover {
+        background: rgba(5, 150, 105, 0.12);
       }
       .hero-badge::before {
         content: "";
@@ -243,7 +290,6 @@
         border-radius: 50%;
         animation: blink 1.5s ease infinite;
       }
-
       .hero-headline {
         font-family: "Sora", sans-serif;
         font-size: clamp(38px, 4.2vw, 60px);
@@ -261,9 +307,16 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-
+      .hero-question {
+        font-size: 19px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 10px;
+        animation: fadeUp 0.7s ease forwards 0.15s;
+        opacity: 0;
+      }
       .hero-sub {
-        font-size: 17px;
+        font-size: 16px;
         line-height: 1.8;
         color: var(--text2);
         max-width: 520px;
@@ -275,7 +328,6 @@
         color: var(--navy);
         font-weight: 600;
       }
-
       .hero-value-box {
         background: var(--bg2);
         border: 1px solid var(--border2);
@@ -304,18 +356,18 @@
         color: var(--navy);
         font-weight: 600;
       }
-
       .hero-ctas {
         display: flex;
         gap: 14px;
         align-items: center;
+        flex-wrap: wrap;
         animation: fadeUp 0.7s ease forwards 0.4s;
         opacity: 0;
       }
       .btn-primary-green {
         background: var(--grad-green);
         color: white;
-        padding: 15px 32px;
+        padding: 15px 28px;
         border-radius: 10px;
         font-size: 15px;
         font-weight: 700;
@@ -324,10 +376,30 @@
         transition:
           transform 0.2s,
           box-shadow 0.2s;
+        cursor: pointer;
+        border: none;
+        font-family: "Inter", sans-serif;
       }
       .btn-primary-green:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 32px rgba(5, 150, 105, 0.36);
+      }
+      .btn-secondary {
+        background: white;
+        color: var(--navy);
+        border: 1.5px solid var(--border2);
+        padding: 14px 24px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .btn-secondary:hover {
+        border-color: var(--green-bdr);
+        box-shadow: 0 4px 16px rgba(5, 150, 105, 0.1);
       }
       .btn-outline {
         color: var(--text2);
@@ -342,7 +414,7 @@
         color: var(--navy);
       }
 
-      /* GRANT CARD (right column) */
+      /* ── GRANT CARD ── */
       .grant-card {
         background: white;
         border: 1.5px solid var(--border2);
@@ -378,9 +450,32 @@
         font-size: 21px;
         font-weight: 800;
         color: var(--navy);
-        margin-bottom: 8px;
+        margin-bottom: 4px;
         line-height: 1.2;
         letter-spacing: -0.5px;
+      }
+      .grant-card-title a {
+        color: inherit;
+        text-decoration: none;
+        border-bottom: 2px solid var(--green-bdr);
+        transition: border-color 0.2s;
+      }
+      .grant-card-title a:hover {
+        border-color: var(--green);
+      }
+      .grant-card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--green);
+        text-decoration: none;
+        margin-bottom: 20px;
+        letter-spacing: 0.3px;
+      }
+      .grant-card-link:hover {
+        text-decoration: underline;
       }
       .grant-card-sub {
         font-size: 13px;
@@ -388,7 +483,6 @@
         margin-bottom: 28px;
         line-height: 1.6;
       }
-
       .grant-rows {
         margin-bottom: 28px;
       }
@@ -423,7 +517,11 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-
+      .grant-row-val.amber {
+        color: var(--amber);
+        font-size: 12px;
+        font-style: italic;
+      }
       .grant-card-cta {
         display: block;
         text-align: center;
@@ -436,6 +534,10 @@
         text-decoration: none;
         transition: opacity 0.2s;
         box-shadow: 0 4px 18px rgba(5, 150, 105, 0.24);
+        cursor: pointer;
+        border: none;
+        font-family: "Inter", sans-serif;
+        width: 100%;
       }
       .grant-card-cta:hover {
         opacity: 0.87;
@@ -446,12 +548,29 @@
         color: var(--text3);
         margin-top: 10px;
       }
-
-      /* WHAT WE DEPLOY */
-      .deploy-section {
-        padding: 96px 60px;
-        border-bottom: 1px solid var(--border);
+      .amber-box {
+        margin-top: 16px;
+        padding: 13px 15px;
+        background: var(--amber-bg);
+        border: 1px solid var(--amber-bdr);
+        border-radius: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        font-size: 12px;
+        line-height: 1.7;
+        color: #92400e;
       }
+      .amber-box-icon {
+        font-size: 13px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .amber-box strong {
+        font-weight: 700;
+      }
+
+      /* ── SHARED SECTION ── */
       .section-label {
         font-size: 11px;
         font-weight: 700;
@@ -487,6 +606,11 @@
         margin-bottom: 56px;
       }
 
+      /* ── DEPLOY / 3-COL GRID ── */
+      .deploy-section {
+        padding: 96px 60px;
+        border-bottom: 1px solid var(--border);
+      }
       .deploy-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -537,7 +661,7 @@
         color: var(--text2);
       }
 
-      /* WHAT'S INCLUDED */
+      /* ── INCLUDED ── */
       .included-section {
         padding: 96px 60px;
         background: var(--bg2);
@@ -592,108 +716,350 @@
         margin-bottom: 12px;
       }
 
-      /* COST BREAKDOWN */
+      /* ── CITIZEN JOURNALIST APP ── */
+      .app-section {
+        padding: 96px 60px;
+        border-bottom: 1px solid var(--border);
+      }
+      .app-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        margin-top: 56px;
+      }
+      .app-features {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .app-feature {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .app-feature-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        flex-shrink: 0;
+        background: var(--green-bg);
+        border: 1px solid var(--green-bdr);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+      }
+      .app-feature-title {
+        font-family: "Sora", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 4px;
+      }
+      .app-feature-desc {
+        font-size: 13px;
+        line-height: 1.65;
+        color: var(--text2);
+      }
+
+      /* Phone mockup */
+      .phone-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .phone {
+        width: 240px;
+        height: 480px;
+        border-radius: 36px;
+        background: var(--navy2);
+        border: 8px solid #1e2460;
+        box-shadow:
+          0 32px 80px rgba(15, 19, 64, 0.35),
+          0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+        position: relative;
+        overflow: hidden;
+      }
+      .phone-notch {
+        width: 80px;
+        height: 20px;
+        background: var(--navy2);
+        border-radius: 0 0 14px 14px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+      .phone-screen {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(160deg, #0f1340 0%, #1a1f5e 100%);
+        padding: 32px 16px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow: hidden;
+      }
+      .phone-status {
+        display: flex;
+        justify-content: space-between;
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.3);
+        font-weight: 600;
+        padding: 0 4px;
+      }
+      .phone-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 0 4px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .phone-app-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: var(--grad-green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+      }
+      .phone-app-name {
+        font-family: "Sora", sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        color: white;
+      }
+      .phone-app-sub {
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .phone-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 10px;
+        padding: 10px 12px;
+      }
+      .phone-card-label {
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(16, 185, 129, 0.7);
+        margin-bottom: 4px;
+      }
+      .phone-card-title {
+        font-size: 11px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.4;
+      }
+      .phone-card-meta {
+        display: flex;
+        gap: 8px;
+        margin-top: 6px;
+      }
+      .phone-tag {
+        font-size: 8px;
+        padding: 2px 7px;
+        background: rgba(5, 150, 105, 0.15);
+        border-radius: 100px;
+        color: rgba(16, 185, 129, 0.8);
+        font-weight: 600;
+      }
+      .phone-btn {
+        margin-top: 8px;
+        background: var(--grad-green);
+        border-radius: 7px;
+        padding: 8px;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 700;
+        color: white;
+      }
+      .phone-ai-chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(123, 92, 250, 0.12);
+        border: 1px solid rgba(123, 92, 250, 0.2);
+        border-radius: 8px;
+        padding: 7px 10px;
+      }
+      .phone-ai-icon {
+        font-size: 14px;
+      }
+      .phone-ai-text {
+        font-size: 9px;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.5;
+      }
+      .phone-ai-text strong {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 600;
+      }
+      .phone-profile {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .phone-avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--grad);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+      .phone-profile-name {
+        font-size: 10px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .phone-profile-articles {
+        font-size: 8px;
+        color: rgba(16, 185, 129, 0.7);
+      }
+
+      .app-callout {
+        margin-top: 48px;
+        padding: 24px 32px;
+        background: var(--navy2);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .app-callout-icon {
+        font-size: 32px;
+        flex-shrink: 0;
+      }
+      .app-callout-text {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.8;
+      }
+      .app-callout-text strong {
+        color: white;
+        font-weight: 600;
+      }
+
+      /* ── GRANT COVERS ── */
       .cost-section {
         padding: 96px 60px;
         border-bottom: 1px solid var(--border);
       }
-      .cost-grid {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 72px;
-        align-items: start;
-        margin-top: 48px;
-      }
-      .cost-table {
-        width: 100%;
-      }
-      .cost-row {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 16px;
-        padding: 14px 0;
-        border-bottom: 1px solid var(--border);
-        font-size: 14px;
-      }
-      .cost-row:last-child {
-        border-bottom: none;
-      }
-      .cost-item {
-        color: var(--text2);
-      }
-      .cost-item strong {
-        color: var(--navy);
-        font-weight: 600;
-        display: block;
-        font-size: 14px;
-      }
-      .cost-item span {
-        font-size: 12px;
-      }
-      .cost-amount {
-        font-weight: 700;
-        color: var(--navy);
-        text-align: right;
-        white-space: nowrap;
-      }
-      .cost-total-row {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 16px;
-        padding: 16px 0;
-        margin-top: 4px;
-        background: var(--green-bg);
-        border: 1px solid var(--green-bdr);
-        border-radius: 8px;
-        padding: 16px 20px;
-      }
-      .cost-total-label {
-        font-weight: 700;
-        color: var(--green);
-        font-size: 15px;
-      }
-      .cost-total-amount {
-        font-family: "Sora", sans-serif;
-        font-size: 20px;
-        font-weight: 800;
-        color: var(--green);
-      }
 
-      .cost-note-card {
-        background: var(--navy2);
-        border-radius: 16px;
-        padding: 36px 32px;
+      /* ── HOW SELECTION WORKS ── */
+      .selection-section {
+        padding: 96px 60px;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
       }
-      .cost-note-title {
-        font-family: "Sora", sans-serif;
+      .process-track {
+        display: grid;
+        grid-template-columns: 1fr 40px 1fr 40px 1fr;
+        gap: 0;
+        align-items: start;
+        margin-top: 56px;
+      }
+      .process-arrow {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 32px;
+        color: var(--text3);
         font-size: 18px;
+      }
+      .process-node {
+        background: white;
+        border: 1px solid var(--border2);
+        border-radius: 16px;
+        padding: 28px 24px;
+      }
+      .process-node.yours {
+        border-top: 3px solid var(--green);
+      }
+      .process-node.alnf {
+        border-top: 3px solid var(--amber);
+      }
+      .process-node-tag {
+        display: inline-block;
+        font-size: 10px;
         font-weight: 700;
-        color: white;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 100px;
         margin-bottom: 14px;
+      }
+      .process-node.yours .process-node-tag {
+        background: var(--green-bg);
+        color: var(--green);
+        border: 1px solid var(--green-bdr);
+      }
+      .process-node.alnf .process-node-tag {
+        background: var(--amber-bg);
+        color: var(--amber);
+        border: 1px solid var(--amber-bdr);
+      }
+      .process-node-icon {
+        font-size: 28px;
+        margin-bottom: 12px;
+        display: block;
+      }
+      .process-node-title {
+        font-family: "Sora", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 8px;
         line-height: 1.3;
       }
-      .cost-note-body {
-        font-size: 14px;
-        line-height: 1.8;
-        color: rgba(255, 255, 255, 0.55);
-      }
-      .cost-note-body strong {
-        color: white;
-        font-weight: 600;
-      }
-      .cost-note-divider {
-        height: 1px;
-        background: rgba(255, 255, 255, 0.08);
-        margin: 20px 0;
-      }
-      .cost-note-highlight {
+      .process-node-desc {
         font-size: 13px;
-        color: rgba(16, 185, 129, 0.8);
+        line-height: 1.75;
+        color: var(--text2);
+      }
+      .selection-clarifier {
+        margin-top: 40px;
+        padding: 28px 32px;
+        background: white;
+        border: 1px solid var(--amber-bdr);
+        border-left: 4px solid var(--amber);
+        border-radius: 0 12px 12px 0;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .selection-clarifier-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+      .selection-clarifier-title {
+        font-family: "Sora", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 6px;
+      }
+      .selection-clarifier-body {
+        font-size: 13.5px;
+        line-height: 1.8;
+        color: var(--text2);
+      }
+      .selection-clarifier-body strong {
+        color: var(--navy);
         font-weight: 600;
-        line-height: 1.7;
       }
 
-      /* SOCIAL PROOF */
+      /* ── PROOF ── */
       .proof-section {
         padding: 96px 60px;
         background: var(--navy2);
@@ -711,7 +1077,6 @@
       .proof-section .section-sub {
         color: rgba(255, 255, 255, 0.4);
       }
-
       .proof-card {
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -746,16 +1111,9 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-      .proof-divider {
-        width: 1px;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.08);
-        align-self: stretch;
-      }
-
       .proof-stats {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 24px;
       }
       .proof-stat-num {
@@ -786,132 +1144,7 @@
         font-style: italic;
       }
 
-      /* GRANT LANGUAGE */
-      .language-section {
-        padding: 96px 60px;
-        border-bottom: 1px solid var(--border);
-      }
-      .language-grid {
-        display: grid;
-        grid-template-columns: 1fr 1.6fr;
-        gap: 72px;
-        align-items: start;
-        margin-top: 48px;
-      }
-      .language-left h3 {
-        font-family: "Sora", sans-serif;
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--navy);
-        margin-bottom: 14px;
-        line-height: 1.3;
-      }
-      .language-left p {
-        font-size: 14px;
-        line-height: 1.8;
-        color: var(--text2);
-      }
-      .language-list {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .language-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        font-size: 13px;
-        color: var(--text2);
-      }
-      .language-item::before {
-        content: "\2713";
-        font-size: 11px;
-        font-weight: 700;
-        color: var(--green);
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-
-      .copy-box {
-        background: var(--navy2);
-        border-radius: 16px;
-        overflow: hidden;
-      }
-      .copy-header {
-        padding: 14px 22px;
-        background: rgba(255, 255, 255, 0.04);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .copy-header-label {
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.3);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .copy-header-label::before {
-        content: "";
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--green2);
-        animation: blink 1.5s ease infinite;
-      }
-      .copy-ready {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        background: var(--green-bg);
-        color: var(--green2);
-        border: 1px solid var(--green-bdr);
-        padding: 3px 10px;
-        border-radius: 100px;
-      }
-      .copy-body {
-        padding: 28px 24px;
-      }
-      .copy-text {
-        font-size: 13.5px;
-        line-height: 2;
-        color: rgba(255, 255, 255, 0.58);
-        font-style: italic;
-        border-left: 2px solid var(--green2);
-        padding-left: 18px;
-        margin-bottom: 24px;
-      }
-      .copy-text strong {
-        color: rgba(255, 255, 255, 0.88);
-        font-weight: 600;
-        font-style: normal;
-      }
-      .copy-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--green-bg);
-        border: 1px solid var(--green-bdr);
-        color: var(--green2);
-        padding: 10px 18px;
-        font-size: 12px;
-        font-weight: 600;
-        cursor: pointer;
-        border-radius: 8px;
-        transition: background 0.2s;
-        font-family: "Inter", sans-serif;
-      }
-      .copy-btn:hover {
-        background: rgba(16, 185, 129, 0.14);
-      }
-
-      /* STEPS */
+      /* ── STEPS ── */
       .steps-section {
         padding: 96px 60px;
         background: var(--bg2);
@@ -979,8 +1212,74 @@
         color: var(--navy);
         font-weight: 600;
       }
+      .step-caveat {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 5px 10px;
+        background: var(--amber-bg);
+        border: 1px solid var(--amber-bdr);
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--amber);
+        line-height: 1.5;
+      }
 
-      /* DEADLINE CTA */
+      /* ── FAQ ── */
+      .faq-section {
+        padding: 96px 60px;
+        border-bottom: 1px solid var(--border);
+      }
+      .faq-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 80px;
+        margin-top: 48px;
+      }
+      .faq-item {
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--border);
+      }
+      .faq-item:nth-last-child(-n + 2) {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .faq-q {
+        font-family: "Sora", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 10px;
+        display: flex;
+        gap: 12px;
+        line-height: 1.4;
+      }
+      .faq-q-num {
+        font-size: 11px;
+        font-weight: 800;
+        color: var(--green2);
+        flex-shrink: 0;
+        padding-top: 3px;
+      }
+      .faq-a {
+        font-size: 13.5px;
+        line-height: 1.8;
+        color: var(--text2);
+        padding-left: 24px;
+      }
+      .faq-a strong {
+        color: var(--navy);
+        font-weight: 600;
+      }
+      .faq-a a {
+        color: var(--green);
+        text-decoration: none;
+      }
+      .faq-a a:hover {
+        text-decoration: underline;
+      }
+
+      /* ── CTA SECTION ── */
       .cta-section {
         padding: 120px 60px;
         text-align: center;
@@ -1035,6 +1334,7 @@
         gap: 16px;
         justify-content: center;
         flex-wrap: wrap;
+        margin-bottom: 12px;
       }
       .btn-white {
         background: white;
@@ -1045,6 +1345,9 @@
         font-weight: 700;
         text-decoration: none;
         transition: transform 0.2s;
+        cursor: pointer;
+        border: none;
+        font-family: "Inter", sans-serif;
       }
       .btn-white:hover {
         transform: translateY(-2px);
@@ -1064,36 +1367,260 @@
         background: rgba(255, 255, 255, 0.07);
       }
       .cta-deadline-note {
-        margin-top: 28px;
+        margin-top: 24px;
         font-size: 12px;
         color: rgba(16, 185, 129, 0.7);
         font-weight: 600;
         letter-spacing: 0.5px;
       }
+      .cta-disclosure {
+        margin-top: 14px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.18);
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+      }
 
-      /* FOOTER */
+      /* ── COUNTDOWN IN CTA ── */
+      .cta-countdown {
+        display: inline-flex;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 40px;
+      }
+      .cta-cd-unit {
+        text-align: center;
+      }
+      .cta-cd-num {
+        font-family: "Sora", sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        background: var(--grad-green);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+        display: block;
+      }
+      .cta-cd-lbl {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: 4px;
+      }
+      .cta-cd-sep {
+        font-size: 36px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.1);
+        margin-bottom: 20px;
+      }
+
+      /* ── MODAL ── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 13, 40, 0.75);
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .modal {
+        background: white;
+        border-radius: 20px;
+        padding: 48px 44px;
+        width: 100%;
+        max-width: 520px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3);
+        transform: translateY(20px);
+        transition: transform 0.3s;
+      }
+      .modal-overlay.open .modal {
+        transform: translateY(0);
+      }
+      .modal-close {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 22px;
+        cursor: pointer;
+        color: var(--text3);
+        background: none;
+        border: none;
+        line-height: 1;
+      }
+      .modal header {
+        margin-bottom: 28px;
+      }
+      .modal-eyebrow {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .modal-eyebrow::before {
+        content: "";
+        width: 14px;
+        height: 2px;
+        background: var(--grad-green);
+        border-radius: 2px;
+      }
+      .modal-title {
+        font-family: "Sora", sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--navy);
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+        margin-bottom: 6px;
+      }
+      .modal-sub {
+        font-size: 13px;
+        color: var(--text2);
+        line-height: 1.6;
+      }
+      .form-field {
+        margin-bottom: 20px;
+      }
+      .form-field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--navy);
+        margin-bottom: 6px;
+        letter-spacing: 0.3px;
+      }
+      .form-field label .req {
+        color: var(--green);
+        margin-left: 2px;
+      }
+      .form-field input,
+      .form-field textarea,
+      .form-field select {
+        width: 100%;
+        padding: 11px 14px;
+        border: 1.5px solid var(--border2);
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: "Inter", sans-serif;
+        color: var(--navy);
+        background: white;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        outline: none;
+      }
+      .form-field input:focus,
+      .form-field textarea:focus,
+      .form-field select:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.08);
+      }
+      .form-field textarea {
+        min-height: 90px;
+        resize: vertical;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .form-submit {
+        width: 100%;
+        padding: 15px;
+        background: var(--grad-green);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        transition: opacity 0.2s;
+        box-shadow: 0 6px 24px rgba(5, 150, 105, 0.28);
+      }
+      .form-submit:hover {
+        opacity: 0.88;
+      }
+      .form-note {
+        text-align: center;
+        font-size: 11px;
+        color: var(--text3);
+        margin-top: 10px;
+      }
+      .form-privacy-note {
+        font-size: 11.5px;
+        color: var(--text3);
+        line-height: 1.7;
+        margin-bottom: 14px;
+      }
+      .form-privacy-note a {
+        color: var(--green);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .form-success {
+        text-align: center;
+        padding: 32px 0;
+      }
+      .form-success-icon {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+      .form-success-title {
+        font-family: "Sora", sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--navy);
+        margin-bottom: 8px;
+      }
+      .form-success-body {
+        font-size: 14px;
+        color: var(--text2);
+        line-height: 1.7;
+      }
+
+      /* ── FOOTER ── */
       footer {
         background: #080b22;
-        padding: 64px 48px 40px;
+        padding: 48px 60px 32px;
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 40px;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        gap: 48px;
         border-top: 1px solid rgba(255, 255, 255, 0.04);
-      }
-      .footer-brand {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
       }
       .footer-logo {
         font-family: "Sora", sans-serif;
         font-size: 20px;
         font-weight: 800;
-        color: white;
-        text-decoration: none;
-        margin-bottom: 14px;
+        margin-bottom: 10px;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0;
       }
-      .footer-logo span {
+      .footer-logo .logo-press {
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .footer-logo .logo-genai {
         background: var(--grad);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -1106,19 +1633,19 @@
         max-width: 220px;
       }
       .footer-col h4 {
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 700;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.25);
-        margin-bottom: 16px;
+        color: rgba(255, 255, 255, 0.22);
+        margin-bottom: 14px;
       }
       .footer-col a {
         display: block;
         font-size: 13px;
-        color: rgba(255, 255, 255, 0.35);
+        color: rgba(255, 255, 255, 0.32);
         text-decoration: none;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         transition: color 0.2s;
       }
       .footer-col a:hover {
@@ -1126,31 +1653,33 @@
       }
       .footer-bottom {
         grid-column: 1/-1;
-        padding-top: 32px;
+        padding-top: 24px;
         border-top: 1px solid rgba(255, 255, 255, 0.04);
         display: flex;
         justify-content: space-between;
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.2);
+        color: rgba(255, 255, 255, 0.18);
       }
-
       .scroll-top-btn {
         position: fixed;
         right: 18px;
         bottom: 18px;
-        width: 44px;
-        height: 44px;
+        width: 42px;
+        height: 42px;
         border: 0;
         border-radius: 50%;
+        background: conic-gradient(
+          var(--green2) var(--scroll, 0%),
+          rgba(255, 255, 255, 0.9) 0
+        );
+        color: var(--navy2);
+        font-size: 18px;
+        font-weight: 800;
         cursor: pointer;
         z-index: 120;
         display: grid;
         place-items: center;
-        color: var(--navy);
-        font-size: 16px;
-        font-weight: 800;
         box-shadow: 0 8px 20px rgba(15, 19, 64, 0.2);
-        background: conic-gradient(var(--green2) var(--scroll, 0%), rgba(255, 255, 255, 0.9) 0);
         opacity: 0;
         pointer-events: none;
         transform: translateY(8px);
@@ -1185,19 +1714,177 @@
         }
       }
 
+      /* ── COOKIE NOTICE ── */
+      .cookie-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 998;
+        background: #080b22;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 14px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+        transform: translateY(100%);
+        transition: transform 0.4s ease;
+      }
+      .cookie-bar.show {
+        transform: translateY(0);
+      }
+      .cookie-bar-text {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.6;
+        max-width: 700px;
+      }
+      .cookie-bar-text a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .cookie-bar-text a:hover {
+        color: white;
+      }
+      .cookie-bar-actions {
+        display: flex;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .cookie-accept {
+        background: var(--grad-green);
+        color: white;
+        border: none;
+        border-radius: 7px;
+        padding: 9px 20px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+      }
+      .cookie-decline {
+        background: transparent;
+        color: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 7px;
+        padding: 9px 16px;
+        font-size: 13px;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        transition: color 0.2s;
+      }
+      .cookie-decline:hover {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* ── LEGAL MODAL (Privacy & Terms) ── */
+      .legal-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 13, 40, 0.82);
+        z-index: 1000;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 40px 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        overflow-y: auto;
+      }
+      .legal-modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .legal-modal {
+        background: white;
+        border-radius: 20px;
+        padding: 56px 52px;
+        width: 100%;
+        max-width: 680px;
+        position: relative;
+        transform: translateY(20px);
+        transition: transform 0.3s;
+        margin: auto;
+      }
+      .legal-modal-overlay.open .legal-modal {
+        transform: translateY(0);
+      }
+      .legal-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        font-size: 22px;
+        cursor: pointer;
+        color: var(--text3);
+        background: none;
+        border: none;
+        line-height: 1;
+      }
+      .legal-modal h2 {
+        font-family: "Sora", sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--navy);
+        margin-bottom: 6px;
+        letter-spacing: -0.5px;
+      }
+      .legal-modal .legal-updated {
+        font-size: 12px;
+        color: var(--text3);
+        margin-bottom: 32px;
+      }
+      .legal-modal h3 {
+        font-family: "Sora", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--navy);
+        margin: 28px 0 8px;
+      }
+      .legal-modal p {
+        font-size: 13.5px;
+        line-height: 1.85;
+        color: var(--text2);
+        margin-bottom: 12px;
+      }
+      .legal-modal ul {
+        padding-left: 18px;
+        margin-bottom: 12px;
+      }
+      .legal-modal li {
+        font-size: 13.5px;
+        line-height: 1.85;
+        color: var(--text2);
+        margin-bottom: 4px;
+      }
+      .legal-modal a {
+        color: var(--green);
+        text-decoration: none;
+      }
+      .legal-modal a:hover {
+        text-decoration: underline;
+      }
+      .legal-modal .legal-contact-box {
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        border-radius: 10px;
+        padding: 18px 20px;
+        margin-top: 8px;
+        font-size: 13px;
+        color: var(--text2);
+        line-height: 1.8;
+      }
+      .legal-modal .legal-contact-box strong {
+        color: var(--navy);
+      }
+
+      /* ── RESPONSIVE ── */
       @media (max-width: 900px) {
         nav {
           padding: 0 20px;
-        }
-        .nav-logo .brand-logo {
-          width: 180px;
-        }
-        .nav-pill {
-          display: none;
-        }
-        .nav-cta {
-          padding: 8px 14px;
-          font-size: 12px;
         }
         .hero {
           grid-template-columns: 1fr;
@@ -1207,13 +1894,18 @@
         .steps-grid {
           grid-template-columns: 1fr;
         }
-        .included-grid {
-          grid-template-columns: 1fr;
-        }
-        .cost-grid,
-        .language-grid {
+        .included-grid,
+        .faq-grid,
+        .app-grid {
           grid-template-columns: 1fr;
           gap: 40px;
+        }
+        .process-track {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .process-arrow {
+          display: none;
         }
         .proof-card {
           grid-template-columns: 1fr;
@@ -1221,124 +1913,294 @@
         .proof-stats {
           grid-template-columns: repeat(2, 1fr);
         }
+        .phone-wrap {
+          display: none;
+        }
         .deploy-section,
         .included-section,
         .cost-section,
-        .language-section,
+        .app-section,
+        .selection-section,
         .steps-section,
         .proof-section,
-        .cta-section {
+        .cta-section,
+        .faq-section {
           padding: 72px 20px;
         }
         footer {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding: 40px 20px 24px;
         }
         .footer-bottom {
           flex-direction: column;
-          gap: 8px;
+          gap: 6px;
         }
-      }
-
-      @media (max-width: 640px) {
-        .deadline-bar {
-          font-size: 12px;
-          line-height: 1.5;
-          padding: 10px 14px;
-        }
-        .hero {
-          padding: 48px 16px 64px;
-          gap: 40px;
-        }
-        .hero-sub {
-          font-size: 16px;
-        }
-        .hero-ctas a {
-          width: 100%;
-          text-align: center;
-        }
-        .proof-stats {
+        .form-row {
           grid-template-columns: 1fr;
         }
-        .footer-logo .brand-logo {
-          width: 200px;
+        .modal {
+          padding: 32px 24px;
         }
+        .faq-item:nth-last-child(-n + 2) {
+          border-bottom: 1px solid var(--border);
+          padding-bottom: 32px;
+        }
+        .faq-item:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+      }
+      @media (max-width: 640px) {
         .scroll-top-btn {
-          width: 40px;
-          height: 40px;
-          right: 24px;
-          bottom: 64px;
+          right: 12px;
+          bottom: 12px;
+          width: 38px;
+          height: 38px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- DEADLINE TICKER -->
-    <div class="deadline-bar">
-      <span class="dot"></span>
-      ALNF Startup &amp; Innovation Grant &mdash; Application Deadline:
-      <span class="highlight">March 13, 2026</span> &mdash; We help you apply at
-      no cost
-      <span class="dot"></span>
+    <!-- ═══ APPLY MODAL ═══ -->
+    <div class="modal-overlay" id="applyModal">
+      <div class="modal" style="position: relative">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div id="modalFormWrap">
+          <header>
+            <div class="modal-eyebrow">&#127942; ALNF Grant Partnership</div>
+            <h2 class="modal-title">Apply with our help</h2>
+            <p class="modal-sub">
+              Tell us about your newsroom and we&rsquo;ll get in touch within
+              one business day to start building your application together
+              &mdash; at no cost.
+            </p>
+          </header>
+          <form onsubmit="submitForm(event)">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="f-newsroom"
+                  >Newsroom Name <span class="req">*</span></label
+                >
+                <input
+                  id="f-newsroom"
+                  type="text"
+                  placeholder="e.g. Tucson Independent"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <label for="f-website"
+                  >Newsroom Website <span class="req">*</span></label
+                >
+                <input
+                  id="f-website"
+                  type="url"
+                  placeholder="https://yournewsroom.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="f-name">Your Name <span class="req">*</span></label>
+                <input
+                  id="f-name"
+                  type="text"
+                  placeholder="First Last"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <label for="f-role">Your Role <span class="req">*</span></label>
+                <input
+                  id="f-role"
+                  type="text"
+                  placeholder="e.g. Editor, Publisher"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="f-email"
+                >Email Address <span class="req">*</span></label
+              >
+              <input
+                id="f-email"
+                type="email"
+                placeholder="you@yournewsroom.com"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="f-communities">What communities do you cover?</label>
+              <input
+                id="f-communities"
+                type="text"
+                placeholder="e.g. Phoenix metro, East Valley suburbs"
+              />
+            </div>
+            <div class="form-field">
+              <label for="f-notes"
+                >Anything specific you&rsquo;d like help with?</label
+              >
+              <textarea
+                id="f-notes"
+                placeholder="Optional — share any context about your newsroom or goals"
+              ></textarea>
+            </div>
+            <p class="form-privacy-note">
+              By submitting this form, you agree to our
+              <a
+                href="#"
+                onclick="
+                  openLegal('privacy');
+                  return false;
+                "
+                >Privacy Policy</a
+              >
+              and
+              <a
+                href="#"
+                onclick="
+                  openLegal('terms');
+                  return false;
+                "
+                >Terms of Service</a
+              >. We will use your information solely to respond to your enquiry
+              and assist with your grant application.
+            </p>
+            <button type="submit" class="form-submit">
+              Submit — We&rsquo;ll Be in Touch &rarr;
+            </button>
+            <p class="form-note">
+              No commitment &middot; Free &middot; We respond within 1 business
+              day
+            </p>
+          </form>
+        </div>
+        <div id="modalSuccess" class="form-success" style="display: none">
+          <div class="form-success-icon">&#10003;&#65039;</div>
+          <div class="form-success-title">We&rsquo;ve got your details!</div>
+          <p class="form-success-body">
+            We&rsquo;ll be in touch within one business day to start working on
+            your application together. Keep an eye on your inbox.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- NAV -->
+    <!-- ═══ DEADLINE BAR ═══ -->
+    <div class="deadline-bar">
+      <span>
+        <span class="dot"></span>
+        ALNF Startup &amp; Innovation Grant &mdash; Deadline:
+        <span class="highlight">March 13, 2026</span>
+        &nbsp;&middot;&nbsp;
+        <a
+          href="https://azmedia.org/2026/02/03/apply-now-grant-funding-now-available-for-local-newsrooms/"
+          target="_blank"
+          rel="noopener"
+          >View official grant &#8599;</a
+        >
+      </span>
+      <div class="countdown-wrap" id="topCountdown">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-days">--</span
+          ><span class="countdown-lbl">Days</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-hours">--</span
+          ><span class="countdown-lbl">Hrs</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-mins">--</span
+          ><span class="countdown-lbl">Min</span>
+        </div>
+        <span class="countdown-sep">:</span>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="cd-secs">--</span
+          ><span class="countdown-lbl">Sec</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ NAV ═══ -->
     <nav>
-      <a href="./index.html" class="nav-logo">Press<span>GenAI</span></a>
+      <a href="./" class="nav-logo"
+        ><span class="logo-press">Press</span
+        ><span class="logo-genai">GenAI</span></a
+      >
       <div class="nav-pill">&#127942; ALNF Grant Partnership</div>
-      <a href="./contact/" class="nav-cta">Book Free Call &rarr;</a>
+      <a href="#cta-section" class="nav-cta">Apply Now &rarr;</a>
     </nav>
 
-    <!-- HERO -->
+    <!-- ═══ HERO ═══ -->
     <section class="hero">
       <div>
-        <div class="hero-badge">
+        <a
+          href="https://arizonalocalnewsfoundation.org"
+          target="_blank"
+          rel="noopener"
+          class="hero-badge"
+        >
           &#127942; ALNF Startup &amp; Innovation Grant &mdash; Up to $10,000
-        </div>
+        </a>
         <h1 class="hero-headline">
-          Your newsroom gets a<br />full hyperlocal platform.<br /><span
-            class="grad-green"
-            >The grant pays for it.</span
-          >
+          The ALNF grant can fund<br />your full hyperlocal platform.<br />
+          <span class="grad-green">We help you win it.</span>
         </h1>
+        <p class="hero-question">
+          Are you an Arizona newsroom applying for the ALNF Grant? We can help.
+        </p>
         <p class="hero-sub">
-          We deploy a <strong>white-labelled PressGenAI platform</strong> for
-          your newsroom &mdash; custom domain, your branding, your city pages,
-          your citizen journalist portal. The ALNF grant covers the full cost.
-          <strong>You pay nothing.</strong>
+          <strong>If your application is selected,</strong> we deploy a
+          white-labelled PressGenAI platform under your brand &mdash; your
+          domain, your city pages, your citizen journalist portal and app.
+          <strong
+            >We help write your application at no cost, regardless of
+            outcome.</strong
+          >
         </p>
         <div class="hero-value-box">
           <div class="hero-value-row">
             <span class="hero-value-icon">&#127981;</span>
             <span
               >A <strong>fully white-labelled platform</strong> deployed under
-              your brand &amp; domain</span
+              your brand &amp; domain &mdash; if awarded</span
             >
           </div>
           <div class="hero-value-row">
-            <span class="hero-value-icon">&#128197;</span>
+            <span class="hero-value-icon">&#128241;</span>
             <span
-              ><strong>12 months</strong> of hosting, support &amp; onboarding
-              included</span
+              >A
+              <strong>dedicated app for your citizen journalists</strong>
+              &mdash; submit, draft with AI, get published</span
             >
           </div>
           <div class="hero-value-row">
             <span class="hero-value-icon">&#128221;</span>
             <span
-              >We <strong>help write your grant application</strong> &mdash;
-              tech section included</span
+              >We <strong>write your entire tech section</strong> &mdash; free,
+              win or lose</span
             >
           </div>
           <div class="hero-value-row">
             <span class="hero-value-icon">&#128176;</span>
             <span
-              ><strong>$0 out of pocket</strong> for your newsroom during the
-              grant year</span
+              ><strong>$0 out of pocket</strong> for your newsroom &mdash; if
+              ALNF selects your application</span
             >
           </div>
         </div>
         <div class="hero-ctas">
-          <a href="#apply" class="btn-primary-green"
-            >Book a Free 20-Minute Call &rarr;</a
+          <button class="btn-primary-green" onclick="window.location.href='./contact'">
+            Apply with Our Help &rarr;
+          </button>
+          <a href="https://calendly.com/contact-social-impact/30min" target="_blank" class="btn-secondary"
+            >&#128222; Book a 20-min Call</a
           >
           <a href="#what-we-deploy" class="btn-outline"
             >See what we deploy &darr;</a
@@ -1346,12 +2208,28 @@
         </div>
       </div>
 
+      <!-- Grant card -->
       <div class="grant-card">
         <div class="grant-card-eyebrow">Grant at a Glance</div>
-        <div class="grant-card-title">ALNF Startup &amp; Innovation Grant</div>
+        <div class="grant-card-title">
+          <a
+            href="https://azmedia.org/2026/02/03/apply-now-grant-funding-now-available-for-local-newsrooms/"
+            target="_blank"
+            rel="noopener"
+            >ALNF Startup &amp; Innovation Grant</a
+          >
+        </div>
+        <a
+          href="https://azmedia.org/wp-content/uploads/2026/02/ALNF-Startup-Innovation-Program-Description.pdf"
+          target="_blank"
+          rel="noopener"
+          class="grant-card-link"
+          >View official grant guidelines &#8599;</a
+        >
         <div class="grant-card-sub">
-          For Arizona newsrooms investing in technology &mdash; you apply, your
-          newsroom receives the grant, you commission the deployment.
+          For Arizona newsrooms investing in technology. You apply, ALNF
+          independently selects recipients in April, and if selected you
+          commission the deployment.
         </div>
         <div class="grant-rows">
           <div class="grant-row">
@@ -1381,23 +2259,103 @@
             <span class="grant-row-val">April 2026</span>
           </div>
           <div class="grant-row">
-            <span class="grant-row-key">Your cost</span>
-            <span class="grant-row-val green">$0</span>
+            <span class="grant-row-key">Your cost if selected</span>
+            <span class="grant-row-val amber"
+              >$0 &mdash; subject to ALNF selection</span
+            >
           </div>
         </div>
-        <a href="#apply" class="grant-card-cta"
-          >I Want to Apply &mdash; Let&rsquo;s Talk &rarr;</a
-        >
+        <button class="grant-card-cta" onclick="window.location.href='./contact'">
+          Apply with Our Help &rarr;
+        </button>
         <p class="grant-card-note">
-          Free call &middot; No commitment &middot; We help write the
-          application
+          Free &middot; No commitment &middot; We respond within 1 business day
         </p>
+        <div class="amber-box">
+          <span class="amber-box-icon">&#9888;&#65039;</span>
+          <span
+            ><strong>How selection works:</strong> You apply to ALNF. ALNF
+            reviews all applications and notifies newsrooms in April. Selection
+            is entirely ALNF&rsquo;s decision &mdash; but we give your
+            application the strongest possible foundation.</span
+          >
+        </div>
       </div>
     </section>
 
-    <!-- WHAT WE DEPLOY -->
+    <!-- ═══ HOW GRANT PROCESS WORKS ═══ -->
+    <div class="selection-section" id="how-it-works">
+      <div class="section-label">The Process</div>
+      <h2 class="section-headline">
+        Here&rsquo;s exactly how the<br />grant process works.
+      </h2>
+      <p class="section-sub" style="margin-bottom: 0">
+        We&rsquo;re not affiliated with ALNF. We&rsquo;re a technology company
+        that helps newsrooms build the strongest possible application &mdash;
+        and delivers the platform if they&rsquo;re selected.
+      </p>
+
+      <div class="process-track">
+        <div class="process-node yours">
+          <span class="process-node-tag">You + PressGenAI</span>
+          <span class="process-node-icon">&#128221;</span>
+          <div class="process-node-title">
+            Build &amp; Submit Your Application
+          </div>
+          <p class="process-node-desc">
+            We prepare your full technology section &mdash; rationale,
+            deliverables, cost breakdown &mdash; at no charge. You review,
+            approve, and submit under your newsroom&rsquo;s name before
+            <strong>March 13.</strong>
+          </p>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node alnf">
+          <span class="process-node-tag">ALNF Decides</span>
+          <span class="process-node-icon">&#9878;&#65039;</span>
+          <div class="process-node-title">Independent Selection in April</div>
+          <p class="process-node-desc">
+            ALNF reviews all eligible applications and independently selects
+            recipients. <strong>This is entirely their decision.</strong> We
+            have no influence over it. Notifications go out in April 2026.
+          </p>
+        </div>
+        <div class="process-arrow">&#10132;</div>
+        <div class="process-node yours">
+          <span class="process-node-tag">If Selected</span>
+          <span class="process-node-icon">&#128640;</span>
+          <div class="process-node-title">We Deploy Your Platform</div>
+          <p class="process-node-desc">
+            Your newsroom receives the grant and commissions the deployment. We
+            build and launch your full white-labelled platform within 30 days.
+            Editors trained. Contributors onboarded.
+          </p>
+        </div>
+      </div>
+
+      <div class="selection-clarifier">
+        <div class="selection-clarifier-icon">&#128161;</div>
+        <div>
+          <div class="selection-clarifier-title">
+            Why we help upfront, before you&rsquo;re selected
+          </div>
+          <p class="selection-clarifier-body">
+            We invest in writing your tech section because
+            <strong
+              >we know our platform better than anyone else can describe
+              it</strong
+            >
+            &mdash; and a precise, well-written application gives your newsroom
+            the best possible shot. If you&rsquo;re not selected, you owe us
+            nothing. If you are, the grant covers everything.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ WHAT WE DEPLOY ═══ -->
     <div class="deploy-section" id="what-we-deploy">
-      <div class="section-label">What You&rsquo;re Getting</div>
+      <div class="section-label">If Selected &mdash; What You Get</div>
       <h2 class="section-headline">
         Not a SaaS subscription.<br />A fully deployed platform.
       </h2>
@@ -1439,7 +2397,7 @@
       </div>
     </div>
 
-    <!-- WHAT'S INCLUDED -->
+    <!-- ═══ PLATFORM FEATURES ═══ -->
     <div class="included-section">
       <div class="section-label">Platform Features</div>
       <h2 class="section-headline">
@@ -1457,12 +2415,12 @@
         </div>
         <div class="included-card">
           <div class="included-tag">For Contributors</div>
-          <div class="included-icon">&#9999;&#65039;</div>
-          <div class="included-title">Citizen Journalist Portal</div>
+          <div class="included-icon">&#128241;</div>
+          <div class="included-title">Citizen Journalist App</div>
           <p class="included-desc">
-            Community contributors get their own portal to submit stories, get
-            AI writing assistance, and build a public profile with their
-            bylines.
+            Every contributor gets a dedicated mobile app to submit stories, use
+            AI to draft, attach photos, and track their published articles
+            &mdash; all under your brand.
           </p>
         </div>
         <div class="included-card">
@@ -1488,26 +2446,191 @@
       </div>
     </div>
 
-    <!-- WHAT THE GRANT COVERS -->
+    <!-- ═══ CITIZEN JOURNALIST APP ═══ -->
+    <div class="app-section">
+      <div class="section-label">For Your Contributors</div>
+      <h2 class="section-headline">
+        Your citizen journalists<br />get their own app.
+      </h2>
+      <p class="section-sub">
+        Every contributor who signs up for your newsroom&rsquo;s platform gets
+        access to a dedicated mobile app. They can report stories from anywhere
+        &mdash; and your editors stay fully in control of what gets published.
+      </p>
+
+      <div class="app-grid">
+        <div class="app-features">
+          <div class="app-feature">
+            <div class="app-feature-icon">&#9999;&#65039;</div>
+            <div>
+              <div class="app-feature-title">
+                Write it yourself or let AI build it
+              </div>
+              <p class="app-feature-desc">
+                Contributors can write their own draft and submit, or answer a
+                few guided prompts and let AI generate a complete, structured
+                article for them &mdash; headline, byline, and body included.
+              </p>
+            </div>
+          </div>
+
+          <div class="app-feature">
+            <div class="app-feature-icon">&#128247;</div>
+            <div>
+              <div class="app-feature-title">Attach photos directly</div>
+              <p class="app-feature-desc">
+                Upload photos from their phone camera or gallery alongside the
+                story. No separate file transfers or email attachments needed.
+              </p>
+            </div>
+          </div>
+
+          <div class="app-feature">
+            <div class="app-feature-icon">&#127981;</div>
+            <div>
+              <div class="app-feature-title">
+                Automatic headline, keywords &amp; category
+              </div>
+              <p class="app-feature-desc">
+                The app generates the headline, suggests keywords for SEO, and
+                assigns the right category and city &mdash; automatically.
+                Contributors don&rsquo;t need to know editorial metadata.
+              </p>
+            </div>
+          </div>
+
+          <div class="app-feature">
+            <div class="app-feature-icon">&#9989;</div>
+            <div>
+              <div class="app-feature-title">
+                Editor approval before anything publishes
+              </div>
+              <p class="app-feature-desc">
+                Every submitted story goes to your editorial dashboard first.
+                <strong
+                  >Nothing goes live without an editor&rsquo;s approval.</strong
+                >
+                You stay in complete editorial control at all times.
+              </p>
+            </div>
+          </div>
+
+          <div class="app-feature">
+            <div class="app-feature-icon">&#128100;</div>
+            <div>
+              <div class="app-feature-title">Personal contributor profile</div>
+              <p class="app-feature-desc">
+                Each contributor gets a public profile page with their bio and a
+                full archive of every article they&rsquo;ve published &mdash;
+                building their credibility and your community&rsquo;s trust.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone mockup -->
+        <div class="phone-wrap">
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="phone-status">
+                <span>9:41</span><span>&#9679;&#9679;&#9679;</span>
+              </div>
+              <div class="phone-header">
+                <div class="phone-app-icon">&#128241;</div>
+                <div class="phone-profile-info">
+                  <div class="phone-app-name">YourNewsroom Reporter</div>
+                  <div class="phone-app-sub">Citizen Journalist App</div>
+                </div>
+              </div>
+              <div class="phone-ai-chip">
+                <span class="phone-ai-icon">&#129302;</span>
+                <div class="phone-ai-text">
+                  <strong>AI Draft Ready</strong><br />Headline &amp; story
+                  generated from your answers
+                </div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-label">Your Story</div>
+                <div class="phone-card-title">
+                  Community Garden Opens in South Phoenix Neighbourhood
+                </div>
+                <div class="phone-card-meta">
+                  <span class="phone-tag">Community</span>
+                  <span class="phone-tag">South Phoenix</span>
+                </div>
+              </div>
+              <div class="phone-card">
+                <div class="phone-card-label">Status</div>
+                <div
+                  class="phone-card-title"
+                  style="color: rgba(16, 185, 129, 0.85); font-size: 12px"
+                >
+                  &#9989; Approved &amp; Published
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  padding: 8px 0;
+                  border-top: 1px solid rgba(255, 255, 255, 0.06);
+                  margin-top: 2px;
+                "
+              >
+                <div class="phone-avatar">&#128100;</div>
+                <div>
+                  <div class="phone-profile-name">Maria Gonzalez</div>
+                  <div
+                    class="phone-profile-articles"
+                    style="color: rgba(16, 185, 129, 0.7)"
+                  >
+                    &#128196; 6 articles published
+                  </div>
+                </div>
+              </div>
+              <div class="phone-btn">+ Submit New Story</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-callout">
+        <div class="app-callout-icon">&#128161;</div>
+        <p class="app-callout-text">
+          <strong
+            >Contributors download the app. Editors review on the dashboard. You
+            stay in control.</strong
+          ><br />
+          The app is branded as your newsroom&rsquo;s. Contributors see your
+          logo, your name. PressGenAI is invisible to your audience.
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══ WHAT THE GRANT COVERS ═══ -->
     <div class="cost-section">
       <div class="section-label">What the Grant Covers</div>
       <h2 class="section-headline">
-        Four deliverables.<br />Fully funded by the grant.
+        Three deliverables.<br />Fully funded if you&rsquo;re selected.
       </h2>
       <p class="section-sub" style="margin-bottom: 48px">
         The ALNF grant funds a complete technology deployment &mdash; not a
-        subscription. Your newsroom receives four concrete, auditable
-        deliverables with clear outcomes.
+        subscription. If your newsroom is selected, it receives three concrete,
+        auditable deliverables with clear outcomes.
       </p>
       <div class="deploy-grid">
         <div class="deploy-card">
           <div class="deploy-card-bar"></div>
           <div class="deploy-card-num">&#10003;</div>
-          <div class="deploy-card-title">White-Label Platform Deployment</div>
+          <div class="deploy-card-title">
+            White-Label Platform + App Deployment
+          </div>
           <p class="deploy-card-desc">
             Your domain, your branding, your masthead. A fully configured
-            hyperlocal news platform built and deployed under your
-            newsroom&rsquo;s identity.
+            hyperlocal news platform and citizen journalist app, deployed under
+            your newsroom&rsquo;s identity.
           </p>
         </div>
         <div class="deploy-card">
@@ -1554,49 +2677,45 @@
       </div>
     </div>
 
-    <!-- PROOF -->
+    <!-- ═══ SOCIAL PROOF ═══ -->
     <div class="proof-section">
       <div class="section-label">Already Live</div>
       <h2 class="section-headline">
         This is a working platform.<br />Not a prototype.
       </h2>
       <p class="section-sub">
-        Before you apply, you can see exactly what you&rsquo;re getting &mdash;
-        because it&rsquo;s already running for a 106-year-old newspaper group in
-        India.
+        Before you apply, you can see exactly what you&rsquo;d be getting
+        &mdash; because it&rsquo;s already running for a 101-year-old newspaper
+        group in India.
       </p>
       <div class="proof-card">
         <div class="proof-logo-block">
           <div class="proof-logo-text">
             &#2340;&#2352;&#2369;&#2339; &#2349;&#2366;&#2352;&#2340;
           </div>
-          <div class="proof-logo-sub">Tarun Bharat &middot; Est. 1919</div>
+          <div class="proof-logo-sub">Tarun Bharat &middot; Est. 1925</div>
         </div>
         <div>
           <div class="proof-stats">
             <div>
-              <div class="proof-stat-num">106</div>
+              <div class="proof-stat-num">101</div>
               <div class="proof-stat-label">Years in print</div>
             </div>
             <div>
-              <div class="proof-stat-num">8</div>
+              <div class="proof-stat-num">2</div>
               <div class="proof-stat-label">Editions live on platform</div>
             </div>
             <div>
-              <div class="proof-stat-num">#7</div>
-              <div class="proof-stat-label">Marathi daily in India</div>
-            </div>
-            <div>
-              <div class="proof-stat-num">3</div>
-              <div class="proof-stat-label">States covered</div>
+              <div class="proof-stat-num">1</div>
+              <div class="proof-stat-label">State covered (Maharashtra)</div>
             </div>
           </div>
           <div class="proof-quote">
             One of India&rsquo;s oldest Marathi newspaper groups &mdash;
-            publishing since 1919 across Maharashtra, Karnataka, and Goa &mdash;
-            uses PressGenAI to run a white-labelled citizen journalism platform.
-            Real stories. Real bylines. Real editors approving content daily.
-            You can visit it now at
+            publishing since 1925 across Maharashtra &mdash; uses PressGenAI to
+            run a white-labelled citizen journalism platform. Real stories. Real
+            bylines. Real editors approving content daily. You can visit it now
+            at
             <a
               href="https://sm.tarunbharat.net"
               target="_blank"
@@ -1608,80 +2727,7 @@
       </div>
     </div>
 
-    <!-- GRANT LANGUAGE -->
-    <div class="language-section">
-      <div class="section-label">Ready-to-Use Grant Language</div>
-      <h2 class="section-headline">
-        We&rsquo;ve already written<br />your tech section.
-      </h2>
-      <div class="language-grid">
-        <div class="language-left">
-          <h3>Copy it word for word. Or use it as a starting point.</h3>
-          <p>
-            Grant applications require precise, specific language about the
-            technology investment being proposed. Most newsrooms spend hours on
-            this. We&rsquo;ve done it already &mdash; because we&rsquo;ve built
-            the technology and can describe its capabilities precisely.
-          </p>
-          <div class="language-list">
-            <div class="language-item">
-              Describes a concrete technology deployment, not a vague &ldquo;AI
-              tool&rdquo;
-            </div>
-            <div class="language-item">
-              Connects directly to ALNF&rsquo;s digital storytelling mandate
-            </div>
-            <div class="language-item">
-              Shows community impact &mdash; more local voices, more coverage
-            </div>
-            <div class="language-item">
-              Positions the newsroom as accountable and strategic
-            </div>
-            <div class="language-item">
-              Avoids jargon that grant committees flag as vague
-            </div>
-          </div>
-        </div>
-        <div class="copy-box">
-          <div class="copy-header">
-            <div class="copy-header-label">
-              Suggested Grant Application Language
-            </div>
-            <span class="copy-ready">Ready to Use</span>
-          </div>
-          <div class="copy-body">
-            <div class="copy-text">
-              &ldquo;This grant will fund the deployment of
-              <strong>PressGenAI</strong>, a white-labelled hyperlocal news
-              platform that gives our newsroom the infrastructure to expand
-              local coverage across multiple communities simultaneously &mdash;
-              without expanding our editorial team.<br /><br />
-              PressGenAI provides community contributors with a structured story
-              submission portal and AI-assisted writing tools, editors with a
-              city- and category-wise review dashboard, and our brand with
-              dedicated city-specific news pages &mdash; all operating under our
-              existing domain and masthead. Readers see our brand. We control
-              all editorial decisions.<br /><br />
-              The grant will cover: platform deployment and white-labelling,
-              editor and contributor onboarding, 12 months of hosting and
-              operational support, and content infrastructure setup. This
-              investment will allow us to
-              <strong
-                >publish more local stories, engage more community voices, and
-                serve the communities we cover more deeply</strong
-              >
-              &mdash; with no ongoing technology cost after the grant
-              period.&rdquo;
-            </div>
-            <button class="copy-btn" onclick="copyGrantText()">
-              &#128203; Copy to Clipboard
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEPS -->
+    <!-- ═══ STEPS ═══ -->
     <div class="steps-section" id="apply">
       <div class="section-label">How It Works</div>
       <h2 class="section-headline">
@@ -1691,12 +2737,12 @@
         <div class="step">
           <div class="step-bar"></div>
           <span class="step-num">STEP 01</span>
-          <span class="step-icon">&#128222;</span>
-          <div class="step-title">We Talk</div>
+          <span class="step-icon">&#128221;</span>
+          <div class="step-title">Apply or Book a Call</div>
           <p class="step-desc">
-            20-minute call. We show you the live platform. You see the city
-            pages, the contributor portal, the editor dashboard. You decide if
-            it&rsquo;s the right fit.
+            Either fill out our short application form or book a free 20-minute
+            call to see the live platform first. Both are free, both lead to the
+            same place.
           </p>
         </div>
         <div class="step">
@@ -1708,17 +2754,22 @@
             We prepare the full technology section of your grant application
             &mdash; rationale, deliverables, cost breakdown.
             <strong>You don&rsquo;t write a word of the tech section.</strong>
+            Free, regardless of outcome.
           </p>
         </div>
         <div class="step">
           <div class="step-bar"></div>
           <span class="step-num">STEP 03</span>
           <span class="step-icon">&#127942;</span>
-          <div class="step-title">Grant Awarded</div>
+          <div class="step-title">ALNF Selects Recipients</div>
           <p class="step-desc">
-            ALNF notifies in April. Your newsroom receives the grant and uses it
-            to fund the platform deployment. We begin building immediately.
+            ALNF independently reviews all applications and notifies newsrooms
+            in April 2026. <strong>If your newsroom is selected,</strong> you
+            use the grant to commission the deployment.
           </p>
+          <span class="step-caveat"
+            >&#9878; Selection is entirely ALNF&rsquo;s decision</span
+          >
         </div>
         <div class="step">
           <div class="step-bar"></div>
@@ -1726,57 +2777,184 @@
           <span class="step-icon">&#128640;</span>
           <div class="step-title">Platform Goes Live</div>
           <p class="step-desc">
-            Your white-labelled hyperlocal platform is deployed within 30 days.
-            Editors trained. Contributors onboarded.
-            <strong>City pages live under your brand.</strong>
+            Your white-labelled hyperlocal platform is deployed within 30 days
+            of award. Editors trained. Contributors onboarded.
+            <strong>City pages and app live under your brand.</strong>
           </p>
         </div>
       </div>
     </div>
 
-    <!-- FINAL CTA -->
-    <div class="cta-section">
+    <!-- ═══ FAQ ═══ -->
+    <div class="faq-section">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-headline">What Arizona newsrooms<br />ask us most.</h2>
+      <p class="section-sub">Straight answers, no sales speak.</p>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-num">Q</span> Do we have to pay anything if we
+            don&rsquo;t get the grant?
+          </div>
+          <p class="faq-a">
+            No. Writing your tech section is <strong>completely free</strong>,
+            whether you&rsquo;re selected or not. We invest the time because we
+            know our platform well enough to describe it precisely &mdash; and a
+            well-written application helps everyone.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-num">Q</span> Are you affiliated with ALNF? Can
+            you guarantee selection?
+          </div>
+          <p class="faq-a">
+            We are <strong>not affiliated with ALNF</strong>. We are an
+            independent technology company. ALNF makes all selection decisions
+            independently. We cannot guarantee, predict, or influence any
+            outcome &mdash; we improve your application&rsquo;s quality, not its
+            result.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-num">Q</span> What if ALNF awards us less than
+            the full platform cost?
+          </div>
+          <p class="faq-a">
+            The deployment scope is designed to fit within the ALNF maximum
+            award of $10,000. On our free call, we&rsquo;ll walk through exactly
+            what&rsquo;s included at different award levels so there are no
+            surprises.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-num">Q</span> We&rsquo;re a small team. Can we
+            actually run this?
+          </div>
+          <p class="faq-a">
+            Yes &mdash; that&rsquo;s what it&rsquo;s built for. The editorial
+            dashboard routes stories automatically. The citizen journalist app
+            handles contributor intake. Training and onboarding are included in
+            the deployment.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-num">Q</span> What happens after the 12-month
+            grant period ends?
+          </div>
+          <p class="faq-a">
+            We&rsquo;ll discuss continuation options well before the year ends.
+            There&rsquo;s no cliff, no surprise contracts. Your newsroom retains
+            full control of its platform and content regardless of what you
+            decide.
+          </p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-num">Q</span> Can we see the platform before
+            applying?
+          </div>
+          <p class="faq-a">
+            Yes &mdash; that&rsquo;s what the free call is for. Or visit
+            <a href="https://sm.tarunbharat.net" target="_blank"
+              >sm.tarunbharat.net</a
+            >
+            right now to see it running in production.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ FINAL CTA ═══ -->
+    <div class="cta-section" id="cta-section">
       <div class="cta-glow"></div>
       <div class="cta-inner">
-        <div class="section-label">March 13 Deadline</div>
+        <div class="section-label">Time Remaining</div>
+        <div class="cta-countdown">
+          <div class="cta-cd-unit">
+            <span class="cta-cd-num" id="cta-days">--</span>
+            <div class="cta-cd-lbl">Days</div>
+          </div>
+          <span class="cta-cd-sep">:</span>
+          <div class="cta-cd-unit">
+            <span class="cta-cd-num" id="cta-hours">--</span>
+            <div class="cta-cd-lbl">Hours</div>
+          </div>
+          <span class="cta-cd-sep">:</span>
+          <div class="cta-cd-unit">
+            <span class="cta-cd-num" id="cta-mins">--</span>
+            <div class="cta-cd-lbl">Minutes</div>
+          </div>
+          <span class="cta-cd-sep">:</span>
+          <div class="cta-cd-unit">
+            <span class="cta-cd-num" id="cta-secs">--</span>
+            <div class="cta-cd-lbl">Seconds</div>
+          </div>
+        </div>
         <h2 class="cta-headline">
-          Let&rsquo;s get your<br />newsroom
-          <span class="grad-green">funded.</span>
+          Let&rsquo;s build the strongest<br />application for your<br /><span
+            class="grad-green"
+            >newsroom.</span
+          >
         </h2>
         <p class="cta-sub">
-          Book a free 20-minute call. We&rsquo;ll show you the live platform,
-          walk through the grant structure, and help you put together a strong
-          application &mdash; at no cost, no obligation.
+          Apply now or book a free 20-minute call. No cost, no commitment
+          &mdash; just a conversation about what&rsquo;s possible for your
+          newsroom.
         </p>
         <div class="cta-btns">
-          <a
-            href="mailto:contact@social-impact.in?subject=ALNF Grant Partnership â€” Let's Talk&body=Hi Sameer, I'd like to learn more about using the ALNF grant to deploy PressGenAI for our newsroom. Please share your availability for a 20-minute call."
-            class="btn-white"
-            >Book a Free Call &rarr;</a
-          >
-          <a href="https://pressgenai.com" class="btn-ghost"
-            >See Full Platform</a
+          <button class="btn-white" onclick="window.location.href='./contact'">
+            Apply with Our Help &rarr;
+          </button>
+          <a href="https://calendly.com/contact-social-impact/30min" target="_blank" class="btn-ghost"
+            >&#128222; Book a 20-min Call</a
           >
         </div>
         <p class="cta-deadline-note">
           &#8987; Grant application deadline: March 13, 2026 &middot; Award
-          notification: April 2026 &middot; No cost to your newsroom
+          notification: April 2026 &middot; No cost to apply
+        </p>
+        <p class="cta-disclosure">
+          PressGenAI is not affiliated with the Arizona Local News Foundation.
+          Grant selection is entirely ALNF&rsquo;s decision. Applying through
+          our partnership does not guarantee selection or increase your
+          probability of award beyond the quality of the application itself.
         </p>
       </div>
     </div>
 
     <!-- FOOTER -->
     <footer>
-      <div class="footer-brand">
-        <a href="./index.html" class="footer-logo">Press<span>GenAI</span></a>
+      <div>
+        <div class="footer-logo">
+          <span class="logo-press">Press</span
+          ><span class="logo-genai">GenAI</span>
+        </div>
         <p class="footer-tagline">
-          Hyperlocal news infrastructure for the newspapers of tomorrow.
+          Hyperlocal news infrastructure for community publishers. A product of
+          Social-Impact Innovations.
+        </p>
+        <p class="footer-address">
+          Social-Impact Innovations Pvt Ltd<br />
+          Pune, Maharashtra, India<br />
+          <a
+            href="mailto:contact@pressgenai.com"
+            style="color: rgba(255, 255, 255, 0.32)"
+            >contact@pressgenai.com</a
+          >
         </p>
       </div>
       <div class="footer-col">
-        <!-- <h4>Product</h4>
-        <a href="#how">How It Works</a>
-        <a href="#features">Features</a> -->
+        <h4>Grant Program</h4>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#what-we-deploy">What We Deploy</a>
+        <a href="#cta-section">Apply Now</a>
+        <a href="https://azmedia.org/2026/02/03/apply-now-grant-funding-now-available-for-local-newsrooms/" target="_blank"
+          >Official ALNF Grant &#8599;</a
+        >
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -1788,11 +2966,23 @@
         <h4>Resources</h4>
         <a href="./documentation">Documentation</a>
         <a href="./case-studies">Case Studies</a>
-        <a href="#">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="https://pressgenai.com">PressGenAI.com</a>
+        <a href="https://sm.tarunbharat.net" target="_blank"
+          >Live Demo (Tarun Bharat)</a
+        >
+        <a href="https://pressgenai.com">Full Feature List</a>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 PressGenAI.com &mdash; All rights reserved.</span>
-        <span>Built for the future of local journalism.</span>
+        <span
+          >&copy; 2026 PressGenAI &mdash; Social-Impact Innovations Pvt Ltd. All
+          rights reserved.</span
+        >
+          &nbsp;&middot;&nbsp; PressGenAI is not affiliated with the Arizona
+          Local News Foundation.
+        </span>
       </div>
     </footer>
     <button
@@ -1806,40 +2996,97 @@
     </button>
 
     <script>
-      function copyGrantText() {
-        const text = `"This grant will fund the deployment of PressGenAI, a white-labelled hyperlocal news platform that gives our newsroom the infrastructure to expand local coverage across multiple communities simultaneously â€” without expanding our editorial team.
+      /* ── COUNTDOWN — Arizona time (America/Phoenix = UTC-7, no DST) ── */
+      function updateCountdown() {
+        const deadline = new Date("2026-03-13T23:59:59-07:00");
+        const now = new Date();
+        const diff = deadline - now;
 
-PressGenAI provides community contributors with a structured story submission portal and AI-assisted writing tools, editors with a city- and category-wise review dashboard, and our brand with dedicated city-specific news pages â€” all operating under our existing domain and masthead. Readers see our brand. We control all editorial decisions.
+        if (diff <= 0) {
+          [
+            "cd-days",
+            "cd-hours",
+            "cd-mins",
+            "cd-secs",
+            "cta-days",
+            "cta-hours",
+            "cta-mins",
+            "cta-secs",
+          ].forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = "00";
+          });
+          return;
+        }
 
-The grant will cover: platform deployment and white-labelling, editor and contributor onboarding, 12 months of hosting and operational support, and content infrastructure setup. This investment will allow us to publish more local stories, engage more community voices, and serve the communities we cover more deeply â€” with no ongoing technology cost after the grant period."`;
-        navigator.clipboard.writeText(text).then(() => {
-          const btn = document.querySelector(".copy-btn");
-          btn.textContent = "\u2713 Copied!";
-          setTimeout(() => {
-            btn.textContent = "Copy to Clipboard";
-          }, 2500);
-        });
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const pad = (n) => String(n).padStart(2, "0");
+
+        document.getElementById("cd-days").textContent = pad(days);
+        document.getElementById("cd-hours").textContent = pad(hours);
+        document.getElementById("cd-mins").textContent = pad(mins);
+        document.getElementById("cd-secs").textContent = pad(secs);
+        document.getElementById("cta-days").textContent = pad(days);
+        document.getElementById("cta-hours").textContent = pad(hours);
+        document.getElementById("cta-mins").textContent = pad(mins);
+        document.getElementById("cta-secs").textContent = pad(secs);
       }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
 
+      /* ── SCROLL TO TOP ── */
       (function () {
         const btn = document.getElementById("scrollTopBtn");
         if (!btn) return;
 
-        const updateProgress = () => {
+        const toggleBtn = () => {
           const scrollTop = window.scrollY || document.documentElement.scrollTop;
-          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-          const progress = maxScroll > 0 ? Math.min((scrollTop / maxScroll) * 100, 100) : 0;
+          const maxScroll =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const progress =
+            maxScroll > 0 ? Math.min((scrollTop / maxScroll) * 100, 100) : 0;
+
           btn.style.setProperty("--scroll", progress + "%");
           btn.classList.toggle("visible", scrollTop > 220);
         };
 
-        window.addEventListener("scroll", updateProgress, { passive: true });
-        window.addEventListener("resize", updateProgress);
-        btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-        updateProgress();
+        window.addEventListener("scroll", toggleBtn, { passive: true });
+        window.addEventListener("resize", toggleBtn);
+        btn.addEventListener("click", () =>
+          window.scrollTo({ top: 0, behavior: "smooth" }),
+        );
+        toggleBtn();
       })();
+
+      /* ── MODAL ── */
+      function openModal() {
+        document.getElementById("applyModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal() {
+        document.getElementById("applyModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      document
+        .getElementById("applyModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeModal();
+        });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeModal();
+      });
+
+      function submitForm(e) {
+        e.preventDefault();
+        document.getElementById("modalFormWrap").style.display = "none";
+        document.getElementById("modalSuccess").style.display = "block";
+      }
     </script>
   </body>
 </html>
-
-
