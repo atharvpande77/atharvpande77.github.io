@@ -1113,7 +1113,7 @@
       }
       .proof-stats {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 24px;
       }
       .proof-stat-num {
@@ -2031,6 +2031,13 @@
             </button>
           </form>
         </div>
+        <div id="modalSuccess" class="form-success" style="display: none">
+          <div class="form-success-icon">&#10003;&#65039;</div>
+          <div class="form-success-title">Thanks for submitting!</div>
+          <p class="form-success-body">
+            We will contact you soon.
+          </p>
+        </div>
       </div>
     </div>
 
@@ -2078,7 +2085,7 @@
         ><span class="logo-genai">GenAI</span></a
       >
       <div class="nav-pill">&#127942; ALNF Grant Partnership</div>
-      <a class="nav-cta" onclick="openModal()">Apply Now &rarr;</a>
+      <a class="nav-cta" onclick="openModal()">Apply With Our Help &rarr;</a>
     </nav>
 
     <!-- ═══ HERO ═══ -->
@@ -2593,12 +2600,16 @@
               <div class="proof-stat-label">Years in print</div>
             </div>
             <div>
-              <div class="proof-stat-num">2</div>
-              <div class="proof-stat-label">Editions live on platform</div>
+              <div class="proof-stat-num">9</div>
+              <div class="proof-stat-label">Active Editions live on platform</div>
             </div>
             <div>
-              <div class="proof-stat-num">1</div>
-              <div class="proof-stat-label">State covered (Maharashtra)</div>
+              <div class="proof-stat-num">#7</div>
+              <div class="proof-stat-label">Marathi daily in India</div>
+            </div>
+            <div>
+              <div class="proof-stat-num">13</div>
+              <div class="proof-stat-label">News Categories</div>
             </div>
           </div>
           <div class="proof-quote">
@@ -2832,9 +2843,9 @@
           Social-Impact Innovations Pvt Ltd<br />
           Pune, Maharashtra, India<br />
           <a
-            href="mailto:contact@pressgenai.com"
+            href="mailto:contact@social-impact.in"
             style="color: rgba(255, 255, 255, 0.32)"
-            >contact@pressgenai.com</a
+            >contact@social-impact.in</a
           >
         </p>
       </div>
@@ -2864,7 +2875,7 @@
         <a href="https://sm.tarunbharat.net" target="_blank"
           >Live Demo (Tarun Bharat)</a
         >
-        <a href="https://pressgenai.com">Full Feature List</a>
+        <!-- <a href="https://pressgenai.com">Full Feature List</a> -->
       </div>
       <div class="footer-bottom">
         <span
@@ -2972,6 +2983,26 @@
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") closeModal();
       });
+
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("sent") !== "1") return;
+
+        const formWrap = document.getElementById("modalFormWrap");
+        const successWrap = document.getElementById("modalSuccess");
+        if (formWrap && successWrap) {
+          formWrap.style.display = "none";
+          successWrap.style.display = "block";
+        }
+        openModal();
+
+        params.delete("sent");
+        const nextUrl =
+          window.location.pathname +
+          (params.toString() ? "?" + params.toString() : "") +
+          window.location.hash;
+        window.history.replaceState({}, "", nextUrl);
+      })();
 
     </script>
   </body>
